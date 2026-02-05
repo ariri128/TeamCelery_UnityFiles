@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b2424a7f54f0740c79b48be3a0086337
+guid: 7bb5947c56d344b908580623af7c1a3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3307921390768229708
-    second: Citronaut_0
+      213: -3631259975810545752
+    second: Arash_Duck_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Citronaut_0
+      name: Arash_Duck_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 52
-        height: 64
+        width: 66
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b2f75e6507e712d0800000000000000
-      internalID: -3307921390768229708
+      spriteID: 8a708be8a4c2b9dc0800000000000000
+      internalID: -3631259975810545752
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Citronaut_0: -3307921390768229708
+      Arash_Duck_0: -3631259975810545752
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

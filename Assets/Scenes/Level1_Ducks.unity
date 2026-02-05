@@ -235,6 +235,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 865be42bcbe6f0144b835acdd8edb241, type: 3}
   - {fileID: 21300000, guid: 75a917ef2aa4f324d9a3fb61caa4fc7e, type: 3}
   - {fileID: 21300000, guid: aa12cf54b5db34d1495618ae7970c710, type: 3}
+  - {fileID: 21300000, guid: 7bb5947c56d344b908580623af7c1a3b, type: 3}
   targetVisibleDuckHeight: 1
   shooter: {fileID: 1414256683}
   knightro: {fileID: 533156439}
