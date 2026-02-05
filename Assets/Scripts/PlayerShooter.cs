@@ -8,6 +8,8 @@ public class PlayerShooter : MonoBehaviour
     private int triesUsed = 0;
     private IShootableTarget currentTarget;
 
+    public UIUpdateScript uiUpdate;
+
     public void RegisterTarget(IShootableTarget target)
     {
         currentTarget = target;
@@ -37,11 +39,19 @@ public class PlayerShooter : MonoBehaviour
             if (shootable != null && shootable == currentTarget)
             {
                 shootable.OnShot();
+
+                uiUpdate.score += 300;
+                uiUpdate.ScoreUpdate();
+                uiUpdate.ShowCollectedDucks();
+
                 currentTarget = null;
                 triesUsed = 0;
                 return;
             }
         }
+
+        uiUpdate.bulletsUsed = triesUsed;
+        uiUpdate.BulletShot();
 
         if (currentTarget != null && triesUsed >= maxTries)
         {
