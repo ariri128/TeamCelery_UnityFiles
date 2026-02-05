@@ -21,6 +21,7 @@ public class UIUpdateScript : MonoBehaviour
     public int currentCollections = 0; //Tracks number of collected items
     public int score = 0;
     public int bulletsUsed = 0;
+    public int round = 0;
 
     //public GameControlScript gameControlScript; //Update with correct script name
 
@@ -34,6 +35,8 @@ public class UIUpdateScript : MonoBehaviour
         scoreText.text = "000000";
         ReloadBullets();
         ShowCollectedDucks(); //remove when testing level 2
+        round = 1;
+        RoundUpdate();
     }
 
     //Updates score text
@@ -42,11 +45,11 @@ public class UIUpdateScript : MonoBehaviour
         scoreText.text = "" + score; //Update with correct call name
     }
 
-    /*//Updates round text
+    //Updates round text
     public void RoundUpdate() 
     {
-        roundText.text = "R = " + gameControlScript.round; //Update with correct call name
-    }*/
+        roundText.text = "R = " + round; //Update with correct call name
+    }
 
     //Removes used bullet UI
     public void BulletShot()
@@ -118,12 +121,8 @@ public class UIUpdateScript : MonoBehaviour
     public void UIResetLevel1()
     {
         //HideAllDucks();
-        Debug.Log("Ducks gone");
         ReloadBullets();
-        Debug.Log("Bullets back");
         currentCollections = 0;
-        Debug.Log("Collections 0");
-        Debug.Log("All done");
     }
 
 

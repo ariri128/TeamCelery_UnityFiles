@@ -56,6 +56,7 @@ public class DuckSpawner : MonoBehaviour
             if (CountAliveDucks() < maxDucksAlive)
             {
                 SpawnDuck();
+                
                 uiUpdate.ReloadBullets();
             }
         }
@@ -133,6 +134,7 @@ public class DuckSpawner : MonoBehaviour
         if (CountAliveDucks() < maxDucksAlive)
         {
             SpawnDuck();
+
             uiUpdate.UIResetLevel1();
         }
     }
@@ -159,7 +161,9 @@ public class DuckSpawner : MonoBehaviour
             }
 
             Invoke(nameof(PlayKnightroAndRespawn), 1f);
-            //uiUpdate.UIResetLevel1();
+
+            uiUpdate.round++;
+            uiUpdate.RoundUpdate();
         }
         else
         {
