@@ -3,6 +3,9 @@ using UnityEngine;
 public class DuckSpawner : MonoBehaviour
 {
     public GameObject duckPrefab;
+    public Sprite[] duckSprites;
+    public float targetVisibleDuckHeight = 0.35f;
+
     public PlayerShooter shooter;
     public KnightroController knightro;
     public LevelLoader levelLoader;
@@ -63,6 +66,28 @@ public class DuckSpawner : MonoBehaviour
         float y = waterLineY + Random.Range(-waterLineRandomRange, waterLineRandomRange);
 
         GameObject duck = Instantiate(duckPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+
+        // Randomize which teammate duck sprite is used
+        SpriteRenderer sr = duck.GetComponent<SpriteRenderer>();
+        if (sr != null && duckSprites != null && duckSprites.Length > 0)
+        {
+            Sprite chosen = duckSprites[Random.Range(0, duckSprites.Length)];
+            sr.sprite = chosen;
+
+            Texture2D tex = chosen.texture;
+            Rect r = GetVisiblePixelRect(tex, 10);
+
+            if (r.width > 0f && r.height > 0f)
+            {
+                // Convert visible pixel height into world units using PPU
+                float visibleHeightWorld = r.height / chosen.pixelsPerUnit;
+
+                float targetVisibleHeightWorld = targetVisibleDuckHeight;
+
+                float scale = targetVisibleHeightWorld / visibleHeightWorld;
+                duck.transform.localScale = new Vector3(scale, scale, duck.transform.localScale.z);
+            }
+        }
 
         DuckTarget target = duck.GetComponent<DuckTarget>();
         if (target != null)
@@ -168,5 +193,40 @@ public class DuckSpawner : MonoBehaviour
         {
             levelLoader.LoadNextLevel();
         }
+    }
+
+    Rect GetVisiblePixelRect(Texture2D tex, byte alphaThreshold = 10)
+    {
+        // Returns the smallest rectangle that contains all pixels with alpha > threshold.
+        // alphaThreshold: 0–255 (10 is a good default)
+
+        if (tex == null) return new Rect(0, 0, 0, 0);
+
+        Color32[] pixels = tex.GetPixels32();
+        int w = tex.width;
+        int h = tex.height;
+
+        int minX = w, minY = h, maxX = -1, maxY = -1;
+
+        for (int y = 0; y < h; y++)
+        {
+            int row = y * w;
+            for (int x = 0; x < w; x++)
+            {
+                byte a = pixels[row + x].a;
+                if (a > alphaThreshold)
+                {
+                    if (x < minX) minX = x;
+                    if (y < minY) minY = y;
+                    if (x > maxX) maxX = x;
+                    if (y > maxY) maxY = y;
+                }
+            }
+        }
+
+        if (maxX < minX || maxY < minY)
+            return new Rect(0, 0, 0, 0); // fully transparent image
+
+        return new Rect(minX, minY, (maxX - minX + 1), (maxY - minY + 1));
     }
 }

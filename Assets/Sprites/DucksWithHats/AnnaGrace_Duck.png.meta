@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 75a917ef2aa4f324d9a3fb61caa4fc7e
+guid: aa12cf54b5db34d1495618ae7970c710
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5228949134273179371
-    second: Shania_Duck_0
+      213: -8153978246767045739
+    second: AnnaGrace_Duck (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shania_Duck_0
+      name: AnnaGrace_Duck (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 22
-        height: 24
+        x: 22
+        y: 22
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bee60f09885f09840800000000000000
-      internalID: 5228949134273179371
+      spriteID: 59310377cff37de80800000000000000
+      internalID: -8153978246767045739
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Shania_Duck_0: 5228949134273179371
+      AnnaGrace_Duck (1)_0: -8153978246767045739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

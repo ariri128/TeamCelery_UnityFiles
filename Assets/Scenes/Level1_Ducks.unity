@@ -226,6 +226,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DuckSpawner
   duckPrefab: {fileID: 6737596819898959836, guid: 094ac9950d7394680b5d5a9a11be49e7, type: 3}
+  duckSprites:
+  - {fileID: 21300000, guid: 48ef6a70605ff844fa5a7d99ddb63571, type: 3}
+  - {fileID: 21300000, guid: cf199abed7c1942ecb36dc5dd28cbd29, type: 3}
+  - {fileID: 21300000, guid: e4668ec6cf8af9445954c0d8d1542579, type: 3}
+  - {fileID: 21300000, guid: 39881cf99af329b43a1a106f97dc3425, type: 3}
+  - {fileID: 21300000, guid: 135a76e029a10f541bd76aaf1df51ffa, type: 3}
+  - {fileID: 21300000, guid: 865be42bcbe6f0144b835acdd8edb241, type: 3}
+  - {fileID: 21300000, guid: 75a917ef2aa4f324d9a3fb61caa4fc7e, type: 3}
+  - {fileID: 21300000, guid: aa12cf54b5db34d1495618ae7970c710, type: 3}
+  targetVisibleDuckHeight: 1
   shooter: {fileID: 1414256683}
   knightro: {fileID: 533156439}
   levelLoader: {fileID: 1414256684}
