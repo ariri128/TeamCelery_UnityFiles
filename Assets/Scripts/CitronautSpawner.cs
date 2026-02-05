@@ -5,6 +5,7 @@ public class CitronautSpawner : MonoBehaviour
     public GameObject citronautPrefab;
     public PlayerShooter shooter;
     public KnightroController knightro;
+    public UIUpdateScript uiUpdate;
 
     public Transform spawnLine;              // Set this to your SpawnLine object
     public float spawnInterval = 1.25f;
@@ -41,7 +42,11 @@ public class CitronautSpawner : MonoBehaviour
             timer = 0f;
 
             if (CountAlive() < maxAlive)
+            {   
                 SpawnOne();
+
+                uiUpdate.ReloadBullets();
+            }
         }
     }
 
@@ -92,7 +97,11 @@ public class CitronautSpawner : MonoBehaviour
         if (citronautPrefab == null || spawnLine == null) return;
 
         if (CountAlive() < maxAlive)
+        {
             SpawnOne();
+
+            uiUpdate.UIResetLevel1();
+        }
     }
 
     public void OnTargetFinished(bool wasKilled, float hitX)
@@ -106,7 +115,12 @@ public class CitronautSpawner : MonoBehaviour
             respawnQueued = true;
             timer = 0f;
 
+            uiUpdate.currentCollections++;
+
             Invoke(nameof(PlayKnightroAndRespawn), 1f);
+
+            uiUpdate.round++;
+            uiUpdate.RoundUpdate();
         }
         else
         {

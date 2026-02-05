@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ public class UIUpdateScript : MonoBehaviour
     public int score = 0;
     public int bulletsUsed = 0;
     public int round = 0;
+    public int currentlevel = 1;
 
     //public GameControlScript gameControlScript; //Update with correct script name
 
@@ -32,9 +34,22 @@ public class UIUpdateScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        scoreText.text = "000000";
-        ReloadBullets();
-        ShowCollectedDucks(); //remove when testing level 2
+        Scene activeLevel = SceneManager.GetActiveScene();
+        string levelName = activeLevel.name;
+
+        if (levelName == "Level1_Ducks")
+        {
+            currentlevel = 1;
+            HideAllDucks();
+        }
+        else if (levelName == "Level2_Citronaut")
+        {
+            currentlevel = 2;
+            HideCitronautHits();
+
+        }
+
+        //scoreText.text = "000000";
         round = 1;
         RoundUpdate();
     }

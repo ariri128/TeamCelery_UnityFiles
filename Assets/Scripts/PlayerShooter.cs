@@ -42,7 +42,15 @@ public class PlayerShooter : MonoBehaviour
 
                 uiUpdate.score += 300;
                 uiUpdate.ScoreUpdate();
-                uiUpdate.ShowCollectedDucks();
+
+                if (uiUpdate.currentlevel == 1)
+                {
+                    uiUpdate.ShowCollectedDucks();
+                }
+                else if (uiUpdate.currentlevel == 2)
+                {
+                    uiUpdate.ShowCitronautHits();
+                }
 
                 currentTarget = null;
                 triesUsed = 0;
