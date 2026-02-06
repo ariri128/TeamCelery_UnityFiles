@@ -9,6 +9,7 @@ public class DuckSpawner : MonoBehaviour
     public PlayerShooter shooter;
     public KnightroController knightro;
     public LevelLoader levelLoader;
+    public UIUpdateScript uiUpdate;
 
     public float spawnInterval = 1.5f;
     public int maxDucksAlive = 1;
@@ -53,7 +54,11 @@ public class DuckSpawner : MonoBehaviour
             timer = 0f;
 
             if (CountAliveDucks() < maxDucksAlive)
+            {
                 SpawnDuck();
+                
+                uiUpdate.ReloadBullets();
+            }
         }
     }
 
@@ -127,7 +132,11 @@ public class DuckSpawner : MonoBehaviour
         if (cam == null) return;
 
         if (CountAliveDucks() < maxDucksAlive)
+        {
             SpawnDuck();
+
+            uiUpdate.UIResetLevel1();
+        }
     }
 
     public void OnTargetFinished(bool wasKilled, float hitX)
@@ -142,6 +151,7 @@ public class DuckSpawner : MonoBehaviour
             timer = 0f;
 
             killsSoFar++;
+            uiUpdate.currentCollections = killsSoFar;
 
             if (killsSoFar >= killsToFinishLevel)
             {
@@ -151,6 +161,9 @@ public class DuckSpawner : MonoBehaviour
             }
 
             Invoke(nameof(PlayKnightroAndRespawn), 1f);
+
+            uiUpdate.round++;
+            uiUpdate.RoundUpdate();
         }
         else
         {
