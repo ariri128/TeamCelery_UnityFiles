@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5889934508738308626}
   - component: {fileID: 8556549039727049603}
   m_Layer: 0
-  m_Name: ExCitronaut
+  m_Name: Citronaut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,5 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CitronautTarget
   spawner: {fileID: 0}
+  explosionPrefab: {fileID: 4024151414417881908, guid: d8d1d5ac18d4eac4c98b6149ac366db0, type: 3}
   escapeSpeed: 6
   destroyDelayWhenShot: 0.15

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1485006132198435473}
   - component: {fileID: -8275610673809063014}
   m_Layer: 0
-  m_Name: ExDuck
+  m_Name: Duck
   m_TagString: Duck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,3 +177,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DuckTarget
   spawner: {fileID: 0}
   destroyDelay: 0.25
+  explosionPrefab: {fileID: 4024151414417881908, guid: d8d1d5ac18d4eac4c98b6149ac366db0, type: 3}

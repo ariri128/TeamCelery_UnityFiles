@@ -795,6 +795,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &517449052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3449936258385516507, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+  m_PrefabInstance: {fileID: 1769542584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &553630722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,8 +1248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f5d165c47b6434f9bcad5a2929915f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIUpdateScript
-  scoreText: {fileID: 1691578885}
-  roundText: {fileID: 2093633451}
+  scoreText: {fileID: 1931830863}
+  roundText: {fileID: 517449052}
   bulletsUI:
   - {fileID: 9709079}
   - {fileID: 9709078}
@@ -1523,6 +1534,10 @@ PrefabInstance:
       propertyPath: spawnLine
       value: 
       objectReference: {fileID: 2145592586}
+    - target: {fileID: 7092292436826505782, guid: 3f3241e4408084da4b198e94a26a7bdd, type: 3}
+      propertyPath: holdDuration
+      value: 1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2932,6 +2947,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1931830863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3929814976494720318, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+  m_PrefabInstance: {fileID: 1769542584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063678977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,7 +3007,7 @@ MonoBehaviour:
   knightro: {fileID: 1114445010}
   uiUpdate: {fileID: 927500350}
   spawnLine: {fileID: 791603449}
-  spawnInterval: 2.5
+  spawnInterval: 3
   maxAlive: 1
   firstSpawnDelay: 1.5
   respawnDelay: 1.5
