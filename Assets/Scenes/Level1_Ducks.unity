@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 75a917ef2aa4f324d9a3fb61caa4fc7e, type: 3}
   - {fileID: 21300000, guid: aa12cf54b5db34d1495618ae7970c710, type: 3}
   - {fileID: 21300000, guid: 7bb5947c56d344b908580623af7c1a3b, type: 3}
+  - {fileID: 21300000, guid: 9c078ccf905bd4436bd4dec7fa1e92f5, type: 3}
   targetVisibleDuckHeight: 1
   shooter: {fileID: 1414256683}
   knightro: {fileID: 533156439}
@@ -275,7 +276,7 @@ MonoBehaviour:
   waterLineY: -2
   waterLineRandomRange: 0.15
   edgePadding: 0.4
-  killsToFinishLevel: 3
+  killsToFinishLevel: 10
 --- !u!1001 &533156438
 PrefabInstance:
   m_ObjectHideFlags: 0
