@@ -9,9 +9,6 @@ public class CitronautMovement : MonoBehaviour
 
     public float borderBounceBoost = 1.0f;
 
-    public float rotateSpeedAfterHit = 40f;
-    public float rotationEase = 2.0f;
-
     public float screenPadding = 0.2f;
 
     private Rigidbody2D rb;
@@ -19,8 +16,8 @@ public class CitronautMovement : MonoBehaviour
     private Vector2 driftDir;
     private float targetSpeed;
 
-    private float spinAmount;
-    private float spinDirection = 1f;
+    public float idleRotateSpeed = 12f;
+    private float spinDir = 1f;
 
     void Awake()
     {
@@ -32,15 +29,15 @@ public class CitronautMovement : MonoBehaviour
         rb.gravityScale = 0f;
 
         PickInitialDirection();
+
+        // Random clockwise / counterclockwise
+        spinDir = (Random.value < 0.5f) ? -1f : 1f;
     }
 
     void Update()
     {
-        // Slowly fade out spinning
-        spinAmount = Mathf.MoveTowards(spinAmount, 0f, Time.deltaTime * 0.25f);
-
-        float spin = rotateSpeedAfterHit * spinAmount * spinDirection;
-        transform.Rotate(0f, 0f, spin * Time.deltaTime);
+        // Constant slow idle spin (random direction)
+        transform.Rotate(0f, 0f, idleRotateSpeed * spinDir * Time.deltaTime);
     }
 
     void FixedUpdate()
@@ -98,10 +95,6 @@ public class CitronautMovement : MonoBehaviour
             driftDir = driftDir.normalized;
 
             targetSpeed *= borderBounceBoost;
-
-            // Start spin
-            spinAmount = Mathf.MoveTowards(spinAmount, 1f, Time.fixedDeltaTime * rotationEase);
-            spinDirection = (Random.value < 0.5f) ? -1f : 1f;
         }
     }
 
