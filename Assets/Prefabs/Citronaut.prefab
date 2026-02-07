@@ -177,6 +177,8 @@ MonoBehaviour:
   rotateSpeedAfterHit: 40
   rotationEase: 2
   screenPadding: 0.2
+  idleRotateSpeed: 24
+  spinDecay: 1.5
 --- !u!114 &8556549039727049603
 MonoBehaviour:
   m_ObjectHideFlags: 0
