@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -65}
+  m_AnchoredPosition: {x: 5, y: -58}
   m_SizeDelta: {x: 213.5222, y: 73.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &156314594777933003
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72.5
-  m_fontSizeBase: 72.5
+  m_fontSize: 68
+  m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -784,7 +784,7 @@ RectTransform:
   m_GameObject: {fileID: 2376577234912123286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 89.126785}
-  m_LocalScale: {x: 0.028, y: 0.028, z: 0.028}
+  m_LocalScale: {x: 0.0257726, y: 0.0257726, z: 0.0257726}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7579221858818589351}
@@ -924,8 +924,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72.5
-  m_fontSizeBase: 72.5
+  m_fontSize: 68
+  m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1393,7 +1393,7 @@ RectTransform:
   m_GameObject: {fileID: 7365252153029524968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 89.126785}
-  m_LocalScale: {x: 0.028, y: 0.028, z: 0.028}
+  m_LocalScale: {x: 0.0257726, y: 0.0257726, z: 0.0257726}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7579221858818589351}
@@ -1468,7 +1468,7 @@ RectTransform:
   m_GameObject: {fileID: 8022911905785126019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 89.126785}
-  m_LocalScale: {x: 0.028, y: 0.028, z: 0.028}
+  m_LocalScale: {x: 0.0257726, y: 0.0257726, z: 0.0257726}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7579221858818589351}
@@ -1760,8 +1760,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 73.6
-  m_fontSizeBase: 73.6
+  m_fontSize: 68
+  m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

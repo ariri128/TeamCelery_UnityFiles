@@ -281,7 +281,7 @@ MonoBehaviour:
   knightro: {fileID: 533156439}
   levelLoader: {fileID: 1414256684}
   uiUpdate: {fileID: 1768736035}
-  spawnInterval: 2.5
+  spawnInterval: 3
   maxDucksAlive: 1
   firstSpawnDelay: 1.5
   respawnDelay: 1.5
@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: spawnLine
       value: 
       objectReference: {fileID: 1162174375}
+    - target: {fileID: 7092292436826505782, guid: 3f3241e4408084da4b198e94a26a7bdd, type: 3}
+      propertyPath: holdDuration
+      value: 1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
