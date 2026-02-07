@@ -45,11 +45,13 @@ public class PlayerShooter : MonoBehaviour
 
                 if (uiUpdate.currentlevel == 1)
                 {
-                    uiUpdate.ShowCollectedDucks();
+                    if (uiUpdate.currentCollections <= 10)
+                        uiUpdate.ShowCollectedDucks();
                 }
                 else if (uiUpdate.currentlevel == 2)
                 {
-                    uiUpdate.ShowCitronautHits();
+                    if (uiUpdate.currentCollections <= 10)
+                        uiUpdate.ShowCitronautHits();
                 }
 
                 currentTarget = null;

@@ -100,7 +100,7 @@ public class CitronautSpawner : MonoBehaviour
         {
             SpawnOne();
 
-            uiUpdate.UIResetLevel1();
+            uiUpdate.ReloadBullets();
         }
     }
 
@@ -116,6 +116,8 @@ public class CitronautSpawner : MonoBehaviour
             timer = 0f;
 
             uiUpdate.currentCollections++;
+            /*if (uiUpdate.currentCollections <= 10)
+                uiUpdate.ShowCitronautHits();*/
 
             Invoke(nameof(PlayKnightroAndRespawn), 1f);
 
