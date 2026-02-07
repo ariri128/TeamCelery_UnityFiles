@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6a13d6c7c5bb9d6459299ede14d3df85
+guid: 0f7c136bd44f0ee4299de3cad8dc4ea6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7313330933738991778
-    second: Citranaut_ship_0
+      213: -2947691168890387987
+    second: StarfallBanner_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Citranaut_ship_0
+      name: StarfallBanner_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 87
-        height: 62
+        width: 900
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5f8c917344d18a90800000000000000
-      internalID: -7313330933738991778
+      spriteID: de18bbadf72b717d0800000000000000
+      internalID: -2947691168890387987
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Citranaut_ship_0: -7313330933738991778
+      StarfallBanner_0: -2947691168890387987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
