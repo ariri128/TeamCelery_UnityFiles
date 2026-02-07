@@ -120,6 +120,7 @@ public class UIUpdateScript : MonoBehaviour
         for (int i = 0; i < currentCollections; i++)
         {
             hitUI[i].sprite = citronautHit;
+            //Debug.Log("You hit Citronaut");
         }
        
     }
