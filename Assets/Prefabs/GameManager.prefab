@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
   maxTries: 3
   uiUpdate: {fileID: 0}
+  hitDetector: {fileID: 2500913785637083223, guid: b522032dee3e44b4e86f0df91bd1d0a0, type: 3}
 --- !u!114 &3314969581879780861
 MonoBehaviour:
   m_ObjectHideFlags: 0

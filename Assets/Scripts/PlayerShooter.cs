@@ -10,6 +10,9 @@ public class PlayerShooter : MonoBehaviour
 
     public UIUpdateScript uiUpdate;
 
+    public HitMarkerDetector hitDetector;
+    private bool canShoot = true;
+
     public void RegisterTarget(IShootableTarget target)
     {
         currentTarget = target;
@@ -18,6 +21,8 @@ public class PlayerShooter : MonoBehaviour
 
     void Update()
     {
+        if (!canShoot) return;
+
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             HandleClick();
@@ -28,14 +33,12 @@ public class PlayerShooter : MonoBehaviour
     {
         triesUsed++;
 
-        if (Camera.main == null) return;
-
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-        if (hit.collider != null)
+        // HIT MARKER BASED HIT CHECK (instead of mouse raycast)
+        if (hitDetector != null && hitDetector.currentTarget != null)
         {
-            IShootableTarget shootable = hit.collider.GetComponent<IShootableTarget>();
+            IShootableTarget shootable = hitDetector.currentTarget;
+
+            // only count as a hit if it's the registered currentTarget
             if (shootable != null && shootable == currentTarget)
             {
                 shootable.OnShot();
@@ -60,6 +63,7 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
+        // If player misses
         uiUpdate.bulletsUsed = triesUsed;
         uiUpdate.BulletShot();
 
@@ -69,6 +73,22 @@ public class PlayerShooter : MonoBehaviour
             currentTarget = null;
             triesUsed = 0;
         }
+    }
+
+    public void EnableShooting()
+    {
+        canShoot = true;
+
+        if (hitDetector != null)
+            hitDetector.enabled = true;
+    }
+
+    public void DisableShooting()
+    {
+        canShoot = false;
+
+        if (hitDetector != null)
+            hitDetector.enabled = false;
     }
 }
 
