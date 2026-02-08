@@ -168,11 +168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5405197297686700405, guid: 22a2d83d1b35742e0a96ee02f22c76d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2105
+      value: 2.84
       objectReference: {fileID: 0}
     - target: {fileID: 5405197297686700405, guid: 22a2d83d1b35742e0a96ee02f22c76d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3129
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5405197297686700405, guid: 22a2d83d1b35742e0a96ee02f22c76d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -209,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 8976765446180342491, guid: 22a2d83d1b35742e0a96ee02f22c76d4, type: 3}
       propertyPath: m_Name
       value: ExKnightro1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976765446180342491, guid: 22a2d83d1b35742e0a96ee02f22c76d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -288,7 +292,8 @@ MonoBehaviour:
   waterLineY: -2
   waterLineRandomRange: 0.15
   edgePadding: 0.4
-  killsToFinishLevel: 10
+  killsPerRound: 10
+  totalRounds: 3
 --- !u!1001 &533156438
 PrefabInstance:
   m_ObjectHideFlags: 0
