@@ -10,6 +10,8 @@ public class CitronautSpawner : MonoBehaviour
     public LevelLoader winLevelLoader;     // set nextSceneName to your WinScene (if using a scene)
     public bool useWinScene = true;        // if false, it will just stop and log win (if using UI panel)
 
+    public Sprite[] citronautRoundSprites; // different Citronauts for each round
+
     public Transform spawnLine;              // Set this to your SpawnLine object
     public float spawnInterval = 1.25f;
 
@@ -94,6 +96,15 @@ public class CitronautSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(x, spawnY, 0f);
 
         GameObject citronaut = Instantiate(citronautPrefab, spawnPos, Quaternion.identity);
+
+        // Set sprite based on current round
+        SpriteRenderer sr = citronaut.GetComponent<SpriteRenderer>();
+        if (sr != null && citronautRoundSprites != null && citronautRoundSprites.Length > 0)
+        {
+            int index = Mathf.Clamp(currentRound - 1, 0, citronautRoundSprites.Length - 1);
+            if (citronautRoundSprites[index] != null)
+                sr.sprite = citronautRoundSprites[index];
+        }
 
         CitronautTarget target = citronaut.GetComponent<CitronautTarget>();
         if (target != null)

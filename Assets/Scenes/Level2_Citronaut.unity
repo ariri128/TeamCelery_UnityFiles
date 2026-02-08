@@ -3000,6 +3000,10 @@ MonoBehaviour:
   uiUpdate: {fileID: 927500350}
   winLevelLoader: {fileID: 0}
   useWinScene: 1
+  citronautRoundSprites:
+  - {fileID: 21300000, guid: b2424a7f54f0740c79b48be3a0086337, type: 3}
+  - {fileID: 21300000, guid: 44bc36049125b894c9922d0ebb780f85, type: 3}
+  - {fileID: 21300000, guid: dae2464730e4e7d49b9fa90f0152d395, type: 3}
   spawnLine: {fileID: 791603449}
   spawnInterval: 3
   maxAlive: 1
