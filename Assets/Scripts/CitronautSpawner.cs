@@ -231,6 +231,7 @@ public class CitronautSpawner : MonoBehaviour
     void WinNow()
     {
         Debug.Log("YOU WIN!");
+        FindFirstObjectByType<PlayerShooter>()?.DisableShooting();
 
         if (useWinScene && winLevelLoader != null)
         {
