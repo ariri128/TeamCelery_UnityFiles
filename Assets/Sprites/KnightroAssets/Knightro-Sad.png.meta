@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cf199abed7c1942ecb36dc5dd28cbd29
+guid: e77895be9d4e4fc4291e0ccc96930976
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8284867891401128967
-    second: Arya_Duck (2)_0
+      213: 876283980280388631
+    second: Knightro-Sad_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Arya_Duck (2)_0
+      name: Knightro-Sad_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 21
-        height: 24
+        x: 1
+        y: 0
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70cf00eb373c9f270800000000000000
-      internalID: 8284867891401128967
+      spriteID: 71c5af623af292c00800000000000000
+      internalID: 876283980280388631
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Arya_Duck (2)_0: 8284867891401128967
+      Knightro-Sad_0: 876283980280388631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
