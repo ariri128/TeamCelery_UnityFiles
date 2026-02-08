@@ -138,7 +138,6 @@ public class UIUpdateScript : MonoBehaviour
     {
         //HideAllDucks();
         ReloadBullets();
-        currentCollections = 0;
     }
 
 

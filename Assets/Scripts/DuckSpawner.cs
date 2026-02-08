@@ -32,12 +32,28 @@ public class DuckSpawner : MonoBehaviour
 
     private float lastHitX;
 
-    public int killsToFinishLevel = 3;
-    private int killsSoFar = 0;
+    // Rounds per level
+    public int killsPerRound = 10;
+    public int totalRounds = 3;
+
+    private int currentRound = 1;
+    private int killsThisRound = 0;
 
     void Start()
     {
         cam = Camera.main;
+
+        currentRound = 1;
+        killsThisRound = 0;
+
+        if (uiUpdate != null)
+        {
+            uiUpdate.round = currentRound;
+            uiUpdate.currentCollections = killsThisRound;
+            uiUpdate.HideAllDucks();
+            uiUpdate.RoundUpdate();
+            uiUpdate.ReloadBullets();
+        }
 
         // Spawn quickly at the start of the level
         Invoke(nameof(TrySpawnDuck), firstSpawnDelay);
@@ -56,8 +72,9 @@ public class DuckSpawner : MonoBehaviour
             if (CountAliveDucks() < maxDucksAlive)
             {
                 SpawnDuck();
-                
-                uiUpdate.ReloadBullets();
+
+                if (uiUpdate != null)
+                    uiUpdate.ReloadBullets();
             }
         }
     }
@@ -135,7 +152,8 @@ public class DuckSpawner : MonoBehaviour
         {
             SpawnDuck();
 
-            uiUpdate.UIResetLevel1();
+            if (uiUpdate != null)
+                uiUpdate.ReloadBullets();
         }
     }
 
@@ -150,24 +168,43 @@ public class DuckSpawner : MonoBehaviour
             respawnQueued = true;
             timer = 0f;
 
-            killsSoFar++;
-            uiUpdate.currentCollections = killsSoFar;
+            killsThisRound++;
 
-            if (killsSoFar >= killsToFinishLevel)
+            if (uiUpdate != null)
             {
-                // Play Knightro, then load next level
-                Invoke(nameof(PlayKnightroThenLoadNext), 1f);
-                return;
+                uiUpdate.currentCollections = killsThisRound;
+                uiUpdate.ShowCollectedDucks();
+            }
+
+            if (killsThisRound >= killsPerRound)
+            {
+                if (currentRound >= totalRounds)
+                {
+                    // Finished Level 1 Round 3 -> go to Level 2
+                    Invoke(nameof(PlayKnightroThenLoadNext), 1f);
+                    return;
+                }
+                else
+                {
+                    // Next round
+                    currentRound++;
+                    killsThisRound = 0;
+
+                    if (uiUpdate != null)
+                    {
+                        uiUpdate.round = currentRound;
+                        uiUpdate.currentCollections = 0;
+                        uiUpdate.HideAllDucks();
+                        uiUpdate.RoundUpdate();
+                    }
+                }
             }
 
             Invoke(nameof(PlayKnightroAndRespawn), 1f);
-
-            uiUpdate.round++;
-            uiUpdate.RoundUpdate();
         }
         else
         {
-            // Missed all 3 shots -> no Knightro, normal pacing
+            // Missed all 3 shots -> no Knightro
             Invoke(nameof(RespawnDuck), spawnInterval);
         }
     }
@@ -199,12 +236,12 @@ public class DuckSpawner : MonoBehaviour
         {
             knightro.PlayLevel1(lastHitX, () =>
             {
-                levelLoader.LoadNextLevel();
+                if (levelLoader != null) levelLoader.LoadNextLevel();
             });
         }
         else
         {
-            levelLoader.LoadNextLevel();
+            if (levelLoader != null) levelLoader.LoadNextLevel();
         }
     }
 
