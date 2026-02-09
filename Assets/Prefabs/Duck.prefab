@@ -195,7 +195,7 @@ MonoBehaviour:
   missDiveDepth: 0.6
   missDiveDuration: 0.85
   jumpLandSplashClip: {fileID: 8300000, guid: f8a86907b93e658438b0f27589109e58, type: 3}
-  jumpLandSplashVolume: 0.35
+  jumpLandSplashVolume: 2
 --- !u!114 &-8275610673809063014
 MonoBehaviour:
   m_ObjectHideFlags: 0

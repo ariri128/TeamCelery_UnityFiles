@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9044493112933972029}
   - component: {fileID: -7404033813316821269}
   m_Layer: 0
-  m_Name: Black and Gold Particle FX
+  m_Name: Black and Gold Particle FX 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4906,7 +4906,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0bcffa3853135974ba78328401527329, type: 3}
+  m_Resource: {fileID: 8300000, guid: c12eab0aa707a974dabc11195bc31bab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
