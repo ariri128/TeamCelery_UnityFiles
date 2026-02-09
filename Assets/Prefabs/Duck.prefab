@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab93782bfcd0e4824b0cf7ea02393fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DuckMovement2
-  speed: 3.5
+  speed: 4
   edgePadding: 0.4
   bobAmplitude: 0.24
   bobFrequency: 2
@@ -191,6 +191,9 @@ MonoBehaviour:
   maxJumpInterval: 8
   jumpHeight: 1.38
   jumpDuration: 1.79
+  missHopHeight: 1
+  missDiveDepth: 0.6
+  missDiveDuration: 0.85
 --- !u!114 &-8275610673809063014
 MonoBehaviour:
   m_ObjectHideFlags: 0

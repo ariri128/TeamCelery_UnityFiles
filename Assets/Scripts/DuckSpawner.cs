@@ -5,6 +5,7 @@ public class DuckSpawner : MonoBehaviour
     public GameObject duckPrefab;
     public Sprite[] duckSprites;
     public float targetVisibleDuckHeight = 0.35f;
+    public float duckHitboxScale = 0.85f; // 1 = full sprite bounds, smaller = tighter
 
     public PlayerShooter shooter;
     public KnightroController knightro;
@@ -51,6 +52,11 @@ public class DuckSpawner : MonoBehaviour
     private bool pendingNextRound = false;
 
     private bool spawningEnabled = false;
+
+    // Speed per round
+    public float round1DuckSpeed = 4f; // speed for Round 1
+    public float speedIncreasePerRound = 0.35f; // added each round (Round2 = +1x, Round3 = +2x)
+    public float maxDuckSpeed = 6f; // To cap it just in case
 
     void Start()
     {
@@ -169,6 +175,20 @@ public class DuckSpawner : MonoBehaviour
 
                 float scale = targetVisibleHeightWorld / visibleHeightWorld;
                 duck.transform.localScale = new Vector3(scale, scale, duck.transform.localScale.z);
+
+                // Match collider to the chosen sprite's bounds
+                BoxCollider2D box = duck.GetComponent<BoxCollider2D>();
+                if (box == null) box = duck.AddComponent<BoxCollider2D>();
+
+                Vector2 size = sr.sprite.bounds.size;
+                Vector2 center = sr.sprite.bounds.center;
+
+                size *= duckHitboxScale;
+
+                box.size = size;
+                box.offset = center;
+
+                box.isTrigger = true;
             }
         }
 
@@ -189,6 +209,10 @@ public class DuckSpawner : MonoBehaviour
         if (mover != null)
         {
             mover.SetBaseY(y);
+
+            // Speed scales per round (Round 1 = round1DuckSpeed)
+            float scaledSpeed = round1DuckSpeed + (currentRound - 1) * speedIncreasePerRound;
+            mover.speed = Mathf.Min(scaledSpeed, maxDuckSpeed);
 
             // Random start direction
             mover.direction = (Random.value < 0.5f) ? -1 : 1;

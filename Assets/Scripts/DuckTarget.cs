@@ -41,14 +41,32 @@ public class DuckTarget : MonoBehaviour, IShootableTarget
         if (isEnding) return;
         isEnding = true;
 
-        // “Goes back in the water” = not visible to player anymore
-        if (sr != null)
-            sr.enabled = false;
+        // Prevent being shot during the miss animation
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
 
-        if (spawner != null)
-            spawner.OnTargetFinished(false, transform.position.x);
+        DuckMovement mover = GetComponent<DuckMovement>();
 
-        Destroy(gameObject, destroyDelay);
+        if (mover != null)
+        {
+            mover.PlayMissDive(() =>
+            {
+                if (spawner != null)
+                    spawner.OnTargetFinished(false, transform.position.x);
+
+                Destroy(gameObject);
+            });
+        }
+        else
+        {
+            // Fallback to old behavior if DuckMovement is missing
+            if (sr != null) sr.enabled = false;
+
+            if (spawner != null)
+                spawner.OnTargetFinished(false, transform.position.x);
+
+            Destroy(gameObject, destroyDelay);
+        }
     }
 
     private void SpawnExplosion()
