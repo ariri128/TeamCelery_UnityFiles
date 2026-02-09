@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.22038, y: -0.23614, z: 0}
-  m_LocalScale: {x: 2.5617871, y: 2.5617871, z: 2.5617871}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.25, y: 3.25, z: 3.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CitronautMovement
   minY: 0
-  minSpeed: 6
-  maxSpeed: 6
+  minSpeed: 7
+  maxSpeed: 7
   borderBounceBoost: 1
   screenPadding: 0.2
   idleRotateSpeed: 40

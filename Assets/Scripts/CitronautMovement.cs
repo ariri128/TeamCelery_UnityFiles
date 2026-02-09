@@ -4,8 +4,7 @@ public class CitronautMovement : MonoBehaviour
 {
     public float minY;                      // Spawn line height
 
-    public float minSpeed = 0.6f;
-    public float maxSpeed = 1.6f;
+    public float moveSpeed = 7f;
 
     public float borderBounceBoost = 1.0f;
 
@@ -19,9 +18,24 @@ public class CitronautMovement : MonoBehaviour
     public float idleRotateSpeed = 12f;
     private float spinDir = 1f;
 
+    // Bounce audio
+    public AudioClip bounceClip; // plug in bounce sound
+    public float bounceVolume = 0.5f;
+    public float bounceCooldown = 0.06f; // prevents spam on consecutive frames
+
+    private AudioSource audioSource;
+    private float lastBounceTime = -999f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.volume = bounceVolume;
     }
 
     void Start()
@@ -95,6 +109,8 @@ public class CitronautMovement : MonoBehaviour
             driftDir = driftDir.normalized;
 
             targetSpeed *= borderBounceBoost;
+
+            PlayBounceSound();
         }
     }
 
@@ -106,6 +122,19 @@ public class CitronautMovement : MonoBehaviour
 
         driftDir = new Vector2(x, y).normalized;
 
-        targetSpeed = Random.Range(minSpeed, maxSpeed);
+        targetSpeed = moveSpeed;
+    }
+
+    void PlayBounceSound()
+    {
+        if (bounceClip == null) return;
+        if (Time.time - lastBounceTime < bounceCooldown) return;
+
+        lastBounceTime = Time.time;
+
+        // Update volume in case it's tweaked in Inspector while running
+        audioSource.volume = bounceVolume;
+
+        audioSource.PlayOneShot(bounceClip);
     }
 }

@@ -109,20 +109,27 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
 
         GameObject boom = Instantiate(explosionPrefab, pos, Quaternion.identity);
 
+        float life = 0.5f; // fallback
+
         // Auto-destroy after particle finishes
         ParticleSystem ps = boom.GetComponent<ParticleSystem>();
         if (ps != null)
         {
-            float time = ps.main.duration;
+            life = ps.main.duration;
 
             if (ps.main.startLifetime.mode == ParticleSystemCurveMode.Constant)
-                time += ps.main.startLifetime.constant;
+                life += ps.main.startLifetime.constant;
+            else
+                life += 0.5f; // safe fallback for non-constant modes
+        }
 
-            Destroy(boom, time + 0.1f);
-        }
-        else
+        // Audio lifetime
+        AudioSource a = boom.GetComponent<AudioSource>();
+        if (a != null && a.clip != null)
         {
-            Destroy(boom, 2f);
+            life = Mathf.Max(life, a.clip.length);
         }
+
+        Destroy(boom, life + 0.1f);
     }
 }

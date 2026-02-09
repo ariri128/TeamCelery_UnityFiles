@@ -40,6 +40,10 @@ public class DuckMovement : MonoBehaviour
     public float missDiveDuration = 0.45f; // total time of hop + dive
     private bool isDiving = false;
 
+    // Splash audio
+    public AudioClip jumpLandSplashClip; // plug in splash sound
+    public float jumpLandSplashVolume = 0.35f;
+
     void Start()
     {
         cam = Camera.main;
@@ -81,6 +85,9 @@ public class DuckMovement : MonoBehaviour
 
                 pos.y = baseY; // return to waterline
                 transform.position = pos;
+
+                // Landing splash
+                PlayOneShot(jumpLandSplashClip, jumpLandSplashVolume);
             }
             else
             {
@@ -146,6 +153,21 @@ public class DuckMovement : MonoBehaviour
         // If your duck faces the wrong way, flip this logic.
         if (sr != null)
             sr.flipX = (direction < 0);
+    }
+
+    void PlayOneShot(AudioClip clip, float volume)
+    {
+        if (clip == null) return;
+
+        AudioSource a = GetComponent<AudioSource>();
+        if (a == null) a = gameObject.AddComponent<AudioSource>();
+
+        a.playOnAwake = false;
+        a.loop = false;
+        a.spatialBlend = 0f;
+        a.volume = volume;
+
+        a.PlayOneShot(clip);
     }
 
     // Spawner calls this after spawning so bobbing uses the correct "waterline" Y

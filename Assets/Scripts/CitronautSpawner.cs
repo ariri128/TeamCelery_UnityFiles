@@ -49,6 +49,11 @@ public class CitronautSpawner : MonoBehaviour
 
     private bool spawningEnabled = false;
 
+    // Size change per round
+    public float round1Scale = 1f;              // Round 1 size
+    public float scaleDecreasePerRound = 0.08f; // Round 2 = 1 - 0.08, Round 3 = 1 - 0.16
+    public float minScale = 0.7f;               // Safety cap
+
     void Start()
     {
         spawningEnabled = false;
@@ -160,13 +165,28 @@ public class CitronautSpawner : MonoBehaviour
 
         GameObject citronaut = Instantiate(citronautPrefab, spawnPos, Quaternion.identity);
 
-        // Set sprite based on current round
+        // Set sprite and sprite size per round
         SpriteRenderer sr = citronaut.GetComponent<SpriteRenderer>();
         if (sr != null && citronautRoundSprites != null && citronautRoundSprites.Length > 0)
         {
             int index = Mathf.Clamp(currentRound - 1, 0, citronautRoundSprites.Length - 1);
+
             if (citronautRoundSprites[index] != null)
                 sr.sprite = citronautRoundSprites[index];
+
+            // Scale per round
+            float scale = round1Scale - (currentRound - 1) * scaleDecreasePerRound;
+            scale = Mathf.Max(scale, minScale);
+
+            citronaut.transform.localScale = Vector3.one * scale;
+
+            // Resize circle collider to match
+            CircleCollider2D circle = citronaut.GetComponent<CircleCollider2D>();
+            if (circle != null)
+            {
+                circle.radius = 0.5f; // normalized size
+                circle.offset = Vector2.zero;
+            }
         }
 
         CitronautTarget target = citronaut.GetComponent<CitronautTarget>();
