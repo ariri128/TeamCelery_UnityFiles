@@ -176,7 +176,7 @@ MonoBehaviour:
   screenPadding: 0.2
   idleRotateSpeed: 40
   bounceClip: {fileID: 8300000, guid: 913f9ae254495574e9868143a2b91519, type: 3}
-  bounceVolume: 0.5
+  bounceVolume: 1
   bounceCooldown: 0.06
 --- !u!114 &8556549039727049603
 MonoBehaviour:
@@ -191,6 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CitronautTarget
   spawner: {fileID: 0}
-  explosionPrefab: {fileID: 4024151414417881908, guid: d8d1d5ac18d4eac4c98b6149ac366db0, type: 3}
+  explosionPrefab: {fileID: 4024151414417881908, guid: 84072da0e06ae4d0094c858098bfbdd1, type: 3}
   escapeSpeed: 6
   destroyDelayWhenShot: 0.15
