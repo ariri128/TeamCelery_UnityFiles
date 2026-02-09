@@ -38,6 +38,15 @@ public class DuckSpawner : MonoBehaviour
     private int currentRound = 1;
     private int killsThisRound = 0;
 
+    public int spawnsPerRound = 10; // round ends after 10 ducks appear (attempts)
+    public int maxMissesToLose = 5;
+
+    public LevelLoader loseLevelLoader; // set nextSceneName = LoseScene
+
+    private int spawnsThisRound = 0; // counts attempts (hit OR miss)
+    private int hitSlotIndex = 0; // 0..9 (consumes a slot every attempt)
+    private int missesTotal = 0; // lose when reaches maxMissesToLose
+
     public float betweenRoundDelay = 0.75f; // delay after Knightro before round updates
     private bool pendingNextRound = false;
 
@@ -53,6 +62,12 @@ public class DuckSpawner : MonoBehaviour
 
         currentRound = 1;
         killsThisRound = 0;
+        spawnsThisRound = 0;
+        hitSlotIndex = 0;
+        missesTotal = 0;
+
+        if (uiUpdate != null)
+            uiUpdate.ResetHitMeter();
 
         if (uiUpdate != null)
         {
@@ -213,8 +228,33 @@ public class DuckSpawner : MonoBehaviour
     {
         lastHitX = hitX;
 
+        // Every duck that finishes (hit OR miss) consumes one slot on the HIT meter
+        if (uiUpdate != null)
+        {
+            uiUpdate.SetHitSlot(hitSlotIndex, wasKilled); // hit colors orange, miss stays empty
+        }
+        hitSlotIndex++;
+
+        // Count attempts (10 spawns per round)
+        spawnsThisRound++;
+
+        // Miss tracking for lose condition
+        if (!wasKilled)
+        {
+            missesTotal++;
+
+            if (missesTotal >= maxMissesToLose)
+            {
+                LoseNow();
+                return;
+            }
+        }
+
+        // If hit, keep existing “Knightro pops up” flow
         if (wasKilled)
         {
+            CancelInvoke(nameof(RespawnDuck));
+
             if (respawnQueued) return;
 
             respawnQueued = true;
@@ -222,25 +262,21 @@ public class DuckSpawner : MonoBehaviour
 
             killsThisRound++;
 
-            if (uiUpdate != null)
-            {
-                uiUpdate.currentCollections = killsThisRound;
-                uiUpdate.ShowCollectedDucks();
-            }
-
-            if (killsThisRound >= killsPerRound)
+            // End of round based on spawns, not kills
+            if (spawnsThisRound >= spawnsPerRound)
             {
                 if (currentRound >= totalRounds)
                 {
-                    // Finished Level 1 Round 3 -> go to Level 2
                     Invoke(nameof(PlayKnightroThenLoadNext), 1f);
                     return;
                 }
                 else
                 {
-                    // Next round
                     currentRound++;
+                    spawnsThisRound = 0;
+                    hitSlotIndex = 0;
                     killsThisRound = 0;
+
                     pendingNextRound = true;
                 }
             }
@@ -249,7 +285,30 @@ public class DuckSpawner : MonoBehaviour
         }
         else
         {
-            // Missed all 3 shots -> no Knightro
+            // Miss = no Knightro
+
+            // End of round flow if last target was a miss
+            if (spawnsThisRound >= spawnsPerRound)
+            {
+                if (currentRound >= totalRounds)
+                {
+                    Invoke(nameof(PlayKnightroThenLoadNext), 1f);
+                    return;
+                }
+                else
+                {
+                    currentRound++;
+                    spawnsThisRound = 0;
+                    hitSlotIndex = 0;
+                    killsThisRound = 0;
+
+                    // Show next round after delay (no Knightro)
+                    Invoke(nameof(BeginNextRound), betweenRoundDelay);
+                    return;
+                }
+            }
+
+            // Normal respawn timing on a miss
             Invoke(nameof(RespawnDuck), spawnInterval);
         }
     }
@@ -266,7 +325,7 @@ public class DuckSpawner : MonoBehaviour
         {
             uiUpdate.round = currentRound;
             uiUpdate.currentCollections = 0;
-            uiUpdate.HideAllDucks();
+            uiUpdate.ResetHitMeter();
 
             uiUpdate.RoundUpdate();               // updates small "R = #"
             uiUpdate.ShowRoundPanel(currentRound); // shows big "Round #"
@@ -328,6 +387,23 @@ public class DuckSpawner : MonoBehaviour
     {
         spawningEnabled = true;
         timer = 0f; // reset so Update doesn’t instantly spawn
+    }
+
+    void LoseNow()
+    {
+        Debug.Log("YOU LOSE!");
+
+        spawningEnabled = false;
+        respawnQueued = true;
+        CancelInvoke();
+
+        if (shooter != null)
+            shooter.DisableShooting();
+
+        if (loseLevelLoader != null)
+            loseLevelLoader.LoadNextLevel();
+        else
+            Debug.LogError("DuckSpawner loseLevelLoader not assigned (set it in Inspector).");
     }
 
     Rect GetVisiblePixelRect(Texture2D tex, byte alphaThreshold = 10)

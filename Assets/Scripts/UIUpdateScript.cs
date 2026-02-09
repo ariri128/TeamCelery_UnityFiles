@@ -54,12 +54,12 @@ public class UIUpdateScript : MonoBehaviour
         if (levelName == "Level1_Ducks")
         {
             currentlevel = 1;
-            HideAllDucks();
+            ResetHitMeter();
         }
         else if (levelName == "Level2_Citronaut")
         {
             currentlevel = 2;
-            HideCitronautHits();
+            ResetHitMeter();
 
         }
 
@@ -214,5 +214,31 @@ public class UIUpdateScript : MonoBehaviour
 
         if (onDone != null)
             onDone();
+    }
+
+    public void ResetHitMeter()
+    {
+        // Reset all 10 slots to ?empty? for the current level
+        for (int i = 0; i < hitUI.Length; i++)
+        {
+            if (currentlevel == 1)
+                hitUI[i].sprite = duckUncollected;
+            else
+                hitUI[i].sprite = citronautMiss;
+        }
+    }
+
+    // Slot-based update:
+    // - slotIndex is 0..9
+    // - wasHit = true colors that slot ?orange? (hit sprite)
+    // - wasHit = false leaves it ?empty? (miss sprite)
+    public void SetHitSlot(int slotIndex, bool wasHit)
+    {
+        if (slotIndex < 0 || slotIndex >= hitUI.Length) return;
+
+        if (currentlevel == 1)
+            hitUI[slotIndex].sprite = wasHit ? duckCollected : duckUncollected;
+        else
+            hitUI[slotIndex].sprite = wasHit ? citronautHit : citronautMiss;
     }
 }
