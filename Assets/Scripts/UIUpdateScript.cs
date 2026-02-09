@@ -10,6 +10,20 @@ public class UIUpdateScript : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text roundText;
 
+    public GameObject roundPanel;
+    public TMP_Text roundPanelText;
+    public float roundPanelShowSeconds = 1.5f;
+
+    public GameObject gameHUDRoot;
+    public GameObject levelPanel;
+    public TMP_Text levelPanelText;
+    public float levelIntroShowSeconds = 3f;
+
+    public GameObject knightroWhistle;
+    public GameObject pegasusJump;
+    public GameObject pegasusWing;
+    public GameObject hitMarker;
+
     public GameObject[] bulletsUI = new GameObject[3]; //All bullet UI
     public Image[] hitUI = new Image[10]; //All hit UI
 
@@ -52,6 +66,12 @@ public class UIUpdateScript : MonoBehaviour
         //scoreText.text = "000000";
         round = 1;
         RoundUpdate();
+
+        if (roundPanel != null)
+            roundPanel.SetActive(false);
+
+        if (levelPanel != null)
+            levelPanel.SetActive(false);
     }
 
     //Updates score text
@@ -140,5 +160,59 @@ public class UIUpdateScript : MonoBehaviour
         ReloadBullets();
     }
 
+    public void ShowRoundPanel(int roundNumber)
+    {
+        if (roundPanel == null || roundPanelText == null) return;
 
+        StopAllCoroutines();
+        StartCoroutine(ShowRoundPanelRoutine(roundNumber));
+    }
+
+    IEnumerator ShowRoundPanelRoutine(int roundNumber)
+    {
+        roundPanel.SetActive(true);
+        roundPanelText.text = "Round " + roundNumber;
+
+        yield return new WaitForSeconds(roundPanelShowSeconds);
+
+        roundPanel.SetActive(false);
+    }
+
+    public void PlayLevelIntro(System.Action onDone)
+    {
+        StopAllCoroutines();
+        StartCoroutine(LevelIntroRoutine(onDone));
+    }
+
+    IEnumerator LevelIntroRoutine(System.Action onDone)
+    {
+        // Hide HUD + hitmarker during intro
+        if (gameHUDRoot != null) gameHUDRoot.SetActive(false);
+        if (hitMarker != null) hitMarker.SetActive(false);
+
+        // Show only level panel + mascots
+        if (levelPanel != null) levelPanel.SetActive(true);
+        if (knightroWhistle != null) knightroWhistle.SetActive(true);
+        if (pegasusJump != null) pegasusJump.SetActive(true);
+        if (pegasusWing != null) pegasusWing.SetActive(true);
+
+        // Set correct level number
+        if (levelPanelText != null)
+            levelPanelText.text = "Level " + currentlevel;
+
+        yield return new WaitForSeconds(levelIntroShowSeconds);
+
+        // Hide the intro stuff
+        if (levelPanel != null) levelPanel.SetActive(false);
+        if (knightroWhistle != null) knightroWhistle.SetActive(false);
+        if (pegasusJump != null) pegasusJump.SetActive(false);
+        if (pegasusWing != null) pegasusWing.SetActive(false);
+
+        // Bring back HUD + hitmarker
+        if (gameHUDRoot != null) gameHUDRoot.SetActive(true);
+        if (hitMarker != null) hitMarker.SetActive(true);
+
+        if (onDone != null)
+            onDone();
+    }
 }

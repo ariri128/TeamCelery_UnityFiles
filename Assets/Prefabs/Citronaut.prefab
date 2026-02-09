@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b2424a7f54f0740c79b48be3a0086337, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,11 +171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CitronautMovement
   minY: 0
-  minSpeed: 3
-  maxSpeed: 6.5
+  minSpeed: 6
+  maxSpeed: 6
   borderBounceBoost: 1
   screenPadding: 0.2
-  idleRotateSpeed: 24
+  idleRotateSpeed: 40
 --- !u!114 &8556549039727049603
 MonoBehaviour:
   m_ObjectHideFlags: 0
