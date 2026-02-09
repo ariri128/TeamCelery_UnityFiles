@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b02249140a610341ab015b80bc00ff4
+guid: eb8ab51ce964a42c78bc327a6b2cd276
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3129315290111898766
-    second: wing open_0
+      213: -3084741376324701655
+    second: spacebackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wing open_0
+      name: spacebackground_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 31
-        width: 41
-        height: 33
+        x: 0
+        y: 0
+        width: 128
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27b8eaec2507294d0800000000000000
-      internalID: -3129315290111898766
+      spriteID: 9227738df0cc035d0800000000000000
+      internalID: -3084741376324701655
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wing open_0: -3129315290111898766
+      spacebackground_0: -3084741376324701655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

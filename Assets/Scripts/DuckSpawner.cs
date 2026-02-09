@@ -19,8 +19,7 @@ public class DuckSpawner : MonoBehaviour
 
     private bool respawnQueued = false;
 
-    // The world Y where the ducks float (top of waves)
-    public float waterLineY = -2f;
+    public Transform spawnLine;
 
     // Small random Y variation so it looks natural
     public float waterLineRandomRange = 0.15f;
@@ -39,9 +38,18 @@ public class DuckSpawner : MonoBehaviour
     private int currentRound = 1;
     private int killsThisRound = 0;
 
+    public float betweenRoundDelay = 0.75f; // delay after Knightro before round updates
+    private bool pendingNextRound = false;
+
+    private bool spawningEnabled = false;
+
     void Start()
     {
         cam = Camera.main;
+
+        spawningEnabled = false;
+        timer = 0f;
+        CancelInvoke();
 
         currentRound = 1;
         killsThisRound = 0;
@@ -55,12 +63,49 @@ public class DuckSpawner : MonoBehaviour
             uiUpdate.ReloadBullets();
         }
 
-        // Spawn quickly at the start of the level
-        Invoke(nameof(TrySpawnDuck), firstSpawnDelay);
+        if (shooter != null)
+            shooter.DisableShooting();
+
+        if (uiUpdate != null)
+        {
+            uiUpdate.PlayLevelIntro(() =>
+            {
+                if (shooter != null)
+                    shooter.EnableShooting();
+
+                // After level intro, show Round 1 stuff
+                uiUpdate.round = currentRound;
+                uiUpdate.RoundUpdate();
+                uiUpdate.ShowRoundPanel(currentRound);
+
+                float popupDelay = uiUpdate.roundPanelShowSeconds;
+
+                // IMPORTANT: block ALL spawning until popup is finished
+                spawningEnabled = false;
+                timer = 0f;
+                CancelInvoke();
+
+                // Enable spawning ONLY after the round panel time is over
+                Invoke(nameof(EnableSpawning), popupDelay);
+
+                // First duck spawn after: popup + firstSpawnDelay
+                Invoke(nameof(TrySpawnDuck), popupDelay + firstSpawnDelay);
+            });
+        }
+        else
+        {
+            if (shooter != null)
+                shooter.EnableShooting();
+
+            spawningEnabled = true;
+            Invoke(nameof(TrySpawnDuck), firstSpawnDelay);
+        }
     }
 
     void Update()
     {
+        if (!spawningEnabled) return;
+
         if (respawnQueued) return;
 
         timer += Time.deltaTime;
@@ -85,7 +130,8 @@ public class DuckSpawner : MonoBehaviour
         float rightEdge = cam.ViewportToWorldPoint(new Vector3(1f, 0.5f, 0f)).x - edgePadding;
 
         float x = Random.Range(leftEdge, rightEdge);
-        float y = waterLineY + Random.Range(-waterLineRandomRange, waterLineRandomRange);
+        float spawnY = (spawnLine != null) ? spawnLine.position.y : 0f;
+        float y = spawnY + Random.Range(-waterLineRandomRange, waterLineRandomRange); ;
 
         GameObject duck = Instantiate(duckPrefab, new Vector3(x, y, 0f), Quaternion.identity);
 
@@ -148,6 +194,12 @@ public class DuckSpawner : MonoBehaviour
 
         if (cam == null) return;
 
+        if (spawnLine == null)
+        {
+            Debug.LogWarning("DuckSpawner: spawnLine not assigned.");
+            return;
+        }
+
         if (CountAliveDucks() < maxDucksAlive)
         {
             SpawnDuck();
@@ -189,14 +241,7 @@ public class DuckSpawner : MonoBehaviour
                     // Next round
                     currentRound++;
                     killsThisRound = 0;
-
-                    if (uiUpdate != null)
-                    {
-                        uiUpdate.round = currentRound;
-                        uiUpdate.currentCollections = 0;
-                        uiUpdate.HideAllDucks();
-                        uiUpdate.RoundUpdate();
-                    }
+                    pendingNextRound = true;
                 }
             }
 
@@ -215,18 +260,52 @@ public class DuckSpawner : MonoBehaviour
         TrySpawnDuck();
     }
 
+    void BeginNextRound()
+    {
+        if (uiUpdate != null)
+        {
+            uiUpdate.round = currentRound;
+            uiUpdate.currentCollections = 0;
+            uiUpdate.HideAllDucks();
+
+            uiUpdate.RoundUpdate();               // updates small "R = #"
+            uiUpdate.ShowRoundPanel(currentRound); // shows big "Round #"
+        }
+
+        float popupDelay = (uiUpdate != null) ? uiUpdate.roundPanelShowSeconds : 0f;
+
+        // keep spawning paused while panel is up
+        Invoke(nameof(RespawnDuck), popupDelay);
+    }
+
     void PlayKnightroAndRespawn()
     {
         if (knightro != null)
         {
             knightro.PlayLevel1(lastHitX, () =>
             {
-                Invoke(nameof(RespawnDuck), respawnDelay);
+                if (pendingNextRound)
+                {
+                    pendingNextRound = false;
+                    Invoke(nameof(BeginNextRound), betweenRoundDelay);
+                }
+                else
+                {
+                    Invoke(nameof(RespawnDuck), respawnDelay);
+                }
             });
         }
         else
         {
-            Invoke(nameof(RespawnDuck), respawnDelay);
+            if (pendingNextRound)
+            {
+                pendingNextRound = false;
+                Invoke(nameof(BeginNextRound), betweenRoundDelay);
+            }
+            else
+            {
+                Invoke(nameof(RespawnDuck), respawnDelay);
+            }
         }
     }
 
@@ -243,6 +322,12 @@ public class DuckSpawner : MonoBehaviour
         {
             if (levelLoader != null) levelLoader.LoadNextLevel();
         }
+    }
+
+    void EnableSpawning()
+    {
+        spawningEnabled = true;
+        timer = 0f; // reset so Update doesn’t instantly spawn
     }
 
     Rect GetVisiblePixelRect(Texture2D tex, byte alphaThreshold = 10)

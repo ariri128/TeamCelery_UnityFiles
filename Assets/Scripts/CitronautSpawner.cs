@@ -34,10 +34,19 @@ public class CitronautSpawner : MonoBehaviour
     private int currentRound = 1;
     private int killsThisRound = 0;
 
+    public float betweenRoundDelay = 0.75f;
+    private bool pendingNextRound = false;
+
+    private bool spawningEnabled = false;
+
     void Start()
     {
         currentRound = 1;
         killsThisRound = 0;
+
+        spawningEnabled = false;
+        timer = 0f;
+        CancelInvoke();
 
         if (uiUpdate != null)
         {
@@ -48,11 +57,49 @@ public class CitronautSpawner : MonoBehaviour
             uiUpdate.ReloadBullets();
         }
 
-        Invoke(nameof(TrySpawnOne), firstSpawnDelay);
+        if (shooter != null)
+            shooter.DisableShooting();
+
+        if (uiUpdate != null)
+        {
+            uiUpdate.PlayLevelIntro(() =>
+            {
+                if (shooter != null)
+                    shooter.EnableShooting();
+
+                // After level intro, show Round 1 stuff
+                uiUpdate.round = currentRound;
+                uiUpdate.RoundUpdate();
+                uiUpdate.ShowRoundPanel(currentRound);
+
+                float popupDelay = uiUpdate.roundPanelShowSeconds;
+
+                // IMPORTANT: block ALL spawning until popup is finished
+                spawningEnabled = false;
+                timer = 0f;
+                CancelInvoke();
+
+                // Enable spawning ONLY after the round panel time is over
+                Invoke(nameof(EnableSpawning), popupDelay);
+
+                // First duck spawn after: popup + firstSpawnDelay
+                Invoke(nameof(TrySpawnOne), popupDelay + firstSpawnDelay);
+            });
+        }
+        else
+        {
+            if (shooter != null)
+                shooter.EnableShooting();
+
+            spawningEnabled = true;
+            Invoke(nameof(TrySpawnOne), firstSpawnDelay);
+        }
     }
 
     void Update()
     {
+        if (!spawningEnabled) return;
+
         if (respawnQueued) return;
 
         if (citronautPrefab == null || spawnLine == null) return;
@@ -147,10 +194,6 @@ public class CitronautSpawner : MonoBehaviour
             respawnQueued = true;
             timer = 0f;
 
-            //uiUpdate.currentCollections++;
-            /*if (uiUpdate.currentCollections <= 10)
-                uiUpdate.ShowCitronautHits();*/
-
             killsThisRound++;
 
             if (uiUpdate != null)
@@ -173,14 +216,7 @@ public class CitronautSpawner : MonoBehaviour
                     // Next round
                     currentRound++;
                     killsThisRound = 0;
-
-                    if (uiUpdate != null)
-                    {
-                        uiUpdate.round = currentRound;
-                        uiUpdate.currentCollections = 0;
-                        uiUpdate.HideCitronautHits();
-                        uiUpdate.RoundUpdate();
-                    }
+                    pendingNextRound = true;
                 }
             }
 
@@ -198,18 +234,51 @@ public class CitronautSpawner : MonoBehaviour
         TrySpawnOne();
     }
 
+    void BeginNextRound()
+    {
+        if (uiUpdate != null)
+        {
+            uiUpdate.round = currentRound;
+            uiUpdate.currentCollections = 0;
+            uiUpdate.HideCitronautHits();
+
+            uiUpdate.RoundUpdate();
+            uiUpdate.ShowRoundPanel(currentRound);
+        }
+
+        float popupDelay = (uiUpdate != null) ? uiUpdate.roundPanelShowSeconds : 0f;
+
+        Invoke(nameof(RespawnOne), popupDelay);
+    }
+
     void PlayKnightroAndRespawn()
     {
         if (knightro != null)
         {
             knightro.PlayLevel2(lastHitX, () =>
             {
-                Invoke(nameof(RespawnOne), respawnDelay);
+                if (pendingNextRound)
+                {
+                    pendingNextRound = false;
+                    Invoke(nameof(BeginNextRound), betweenRoundDelay);
+                }
+                else
+                {
+                    Invoke(nameof(RespawnOne), respawnDelay);
+                }
             });
         }
         else
         {
-            Invoke(nameof(RespawnOne), respawnDelay);
+            if (pendingNextRound)
+            {
+                pendingNextRound = false;
+                Invoke(nameof(BeginNextRound), betweenRoundDelay);
+            }
+            else
+            {
+                Invoke(nameof(RespawnOne), respawnDelay);
+            }
         }
     }
 
@@ -226,6 +295,12 @@ public class CitronautSpawner : MonoBehaviour
         {
             WinNow();
         }
+    }
+
+    void EnableSpawning()
+    {
+        spawningEnabled = true;
+        timer = 0f; // reset so Update doesn’t instantly spawn
     }
 
     void WinNow()
