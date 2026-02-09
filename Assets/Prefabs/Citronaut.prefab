@@ -171,11 +171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CitronautMovement
   minY: 0
-  minSpeed: 7
-  maxSpeed: 7
+  moveSpeed: 7
   borderBounceBoost: 1
   screenPadding: 0.2
   idleRotateSpeed: 40
+  bounceClip: {fileID: 8300000, guid: 913f9ae254495574e9868143a2b91519, type: 3}
+  bounceVolume: 0.5
+  bounceCooldown: 0.06
 --- !u!114 &8556549039727049603
 MonoBehaviour:
   m_ObjectHideFlags: 0
