@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6114b15c93a5411bae0db3c21af30d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIClickSFX
-  clickClip: {fileID: 0}
+  clickClip: {fileID: 8300000, guid: 8953310db053a7e45937d1113f665ef0, type: 3}
   volume: 0.3
