@@ -3010,7 +3010,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188355531}
   m_CullTransparentMesh: 1
---- !u!1 &1305097791
+--- !u!1 &1268029697
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3018,23 +3018,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1305097793}
-  - component: {fileID: 1305097792}
+  - component: {fileID: 1268029699}
+  - component: {fileID: 1268029698}
   m_Layer: 0
-  m_Name: StarfallBanner
+  m_Name: StarfallBanner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &1305097792
+--- !u!212 &1268029698
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305097791}
+  m_GameObject: {fileID: 1268029697}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -3074,29 +3074,29 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -12
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0f7c136bd44f0ee4299de3cad8dc4ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f27da051df2f8ba40bae1dab17b38bff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 56.25, y: 37.5}
+  m_Size: {x: 9, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1305097793
+--- !u!4 &1268029699
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305097791}
+  m_GameObject: {fileID: 1268029697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 0.82, z: 0}
-  m_LocalScale: {x: 0.3678727, y: 0.3678727, z: 0.3678727}
+  m_LocalPosition: {x: 0.03, y: 0.52, z: 0}
+  m_LocalScale: {x: 2.2861, y: 2.2861, z: 2.2861}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4443,10 +4443,10 @@ SceneRoots:
   - {fileID: 20891337}
   - {fileID: 1376050920}
   - {fileID: 121347955}
-  - {fileID: 1305097793}
   - {fileID: 1386135946}
   - {fileID: 1081739204}
   - {fileID: 1707288329}
   - {fileID: 520099859}
   - {fileID: 1877891239058450025}
   - {fileID: 6110249570023563287}
+  - {fileID: 1268029699}
