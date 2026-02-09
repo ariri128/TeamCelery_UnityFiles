@@ -187,13 +187,15 @@ MonoBehaviour:
   swayRotation: 8
   swayFrequency: 2
   direction: 1
-  minJumpInterval: 4
-  maxJumpInterval: 8
+  minJumpInterval: 2
+  maxJumpInterval: 3.5
   jumpHeight: 1.38
   jumpDuration: 1.79
   missHopHeight: 1
   missDiveDepth: 0.6
   missDiveDuration: 0.85
+  jumpLandSplashClip: {fileID: 0}
+  jumpLandSplashVolume: 0.35
 --- !u!114 &-8275610673809063014
 MonoBehaviour:
   m_ObjectHideFlags: 0

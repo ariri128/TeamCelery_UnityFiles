@@ -58,6 +58,10 @@ public class DuckSpawner : MonoBehaviour
     public float speedIncreasePerRound = 0.35f; // added each round (Round2 = +1x, Round3 = +2x)
     public float maxDuckSpeed = 6f; // To cap it just in case
 
+    // Splash audio
+    public AudioClip spawnSplashClip; // plug in splash sound
+    public float spawnSplashVolume = 0.35f;
+
     void Start()
     {
         cam = Camera.main;
@@ -155,6 +159,20 @@ public class DuckSpawner : MonoBehaviour
         float y = spawnY + Random.Range(-waterLineRandomRange, waterLineRandomRange); ;
 
         GameObject duck = Instantiate(duckPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+
+        // Spawn splash sound (plays from the duck's position)
+        if (spawnSplashClip != null)
+        {
+            AudioSource a = duck.GetComponent<AudioSource>();
+            if (a == null) a = duck.AddComponent<AudioSource>();
+
+            a.playOnAwake = false;
+            a.loop = false;
+            a.spatialBlend = 0f; // 0 = 2D
+            a.volume = spawnSplashVolume;
+
+            a.PlayOneShot(spawnSplashClip);
+        }
 
         // Randomize which teammate duck sprite is used
         SpriteRenderer sr = duck.GetComponent<SpriteRenderer>();
