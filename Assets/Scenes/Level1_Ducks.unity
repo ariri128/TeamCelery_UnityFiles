@@ -488,6 +488,8 @@ MonoBehaviour:
   round1DuckSpeed: 5
   speedIncreasePerRound: 1
   maxDuckSpeed: 9
+  spawnSplashClip: {fileID: 0}
+  spawnSplashVolume: 0.35
 --- !u!1001 &533156438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1701,6 +1703,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6923179974517063850, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
       propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2084892063}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755612478855789706, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
