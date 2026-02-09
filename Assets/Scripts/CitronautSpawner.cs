@@ -28,11 +28,21 @@ public class CitronautSpawner : MonoBehaviour
 
     private float lastHitX;
 
+    // Rounds per level
     public int killsPerRound = 10;
     public int totalRounds = 3;
 
     private int currentRound = 1;
     private int killsThisRound = 0;
+
+    public int spawnsPerRound = 10;
+    public int maxMissesToLose = 5;
+
+    public LevelLoader loseLevelLoader; // set nextSceneName = LoseScene
+
+    private int spawnsThisRound = 0;
+    private int hitSlotIndex = 0;
+    private int missesTotal = 0;
 
     public float betweenRoundDelay = 0.75f;
     private bool pendingNextRound = false;
@@ -41,12 +51,18 @@ public class CitronautSpawner : MonoBehaviour
 
     void Start()
     {
-        currentRound = 1;
-        killsThisRound = 0;
-
         spawningEnabled = false;
         timer = 0f;
         CancelInvoke();
+
+        currentRound = 1;
+        killsThisRound = 0;
+        spawnsThisRound = 0;
+        hitSlotIndex = 0;
+        missesTotal = 0;
+
+        if (uiUpdate != null)
+            uiUpdate.ResetHitMeter();
 
         if (uiUpdate != null)
         {
@@ -187,8 +203,27 @@ public class CitronautSpawner : MonoBehaviour
     {
         lastHitX = hitX;
 
+        if (uiUpdate != null)
+            uiUpdate.SetHitSlot(hitSlotIndex, wasKilled);
+
+        hitSlotIndex++;
+        spawnsThisRound++;
+
+        if (!wasKilled)
+        {
+            missesTotal++;
+
+            if (missesTotal >= maxMissesToLose)
+            {
+                LoseNow();
+                return;
+            }
+        }
+
         if (wasKilled)
         {
+            CancelInvoke(nameof(RespawnOne));
+
             if (respawnQueued) return;
 
             respawnQueued = true;
@@ -196,26 +231,20 @@ public class CitronautSpawner : MonoBehaviour
 
             killsThisRound++;
 
-            if (uiUpdate != null)
-            {
-                uiUpdate.currentCollections = killsThisRound;
-                uiUpdate.ShowCitronautHits();
-            }
-
-            // Rounds
-            if (killsThisRound >= killsPerRound)
+            if (spawnsThisRound >= spawnsPerRound)
             {
                 if (currentRound >= totalRounds)
                 {
-                    // WIN after Round 3
                     Invoke(nameof(PlayKnightroThenWin), 1f);
                     return;
                 }
                 else
                 {
-                    // Next round
                     currentRound++;
-                    killsThisRound = 0;
+                    spawnsThisRound = 0;
+                    hitSlotIndex = 0;
+                    killsThisRound = 0; // optional
+
                     pendingNextRound = true;
                 }
             }
@@ -224,6 +253,25 @@ public class CitronautSpawner : MonoBehaviour
         }
         else
         {
+            if (spawnsThisRound >= spawnsPerRound)
+            {
+                if (currentRound >= totalRounds)
+                {
+                    Invoke(nameof(PlayKnightroThenWin), 1f);
+                    return;
+                }
+                else
+                {
+                    currentRound++;
+                    spawnsThisRound = 0;
+                    hitSlotIndex = 0;
+                    killsThisRound = 0; // optional
+
+                    Invoke(nameof(BeginNextRound), betweenRoundDelay);
+                    return;
+                }
+            }
+
             Invoke(nameof(RespawnOne), spawnInterval);
         }
     }
@@ -240,7 +288,7 @@ public class CitronautSpawner : MonoBehaviour
         {
             uiUpdate.round = currentRound;
             uiUpdate.currentCollections = 0;
-            uiUpdate.HideCitronautHits();
+            uiUpdate.ResetHitMeter();
 
             uiUpdate.RoundUpdate();
             uiUpdate.ShowRoundPanel(currentRound);
@@ -317,5 +365,22 @@ public class CitronautSpawner : MonoBehaviour
             // Temporary fallback since win scene/panel is not set yet
             enabled = false; // stops spawning
         }
+    }
+
+    void LoseNow()
+    {
+        Debug.Log("YOU LOSE!");
+
+        spawningEnabled = false;
+        respawnQueued = true;
+        CancelInvoke();
+
+        if (shooter != null)
+            shooter.DisableShooting();
+
+        if (loseLevelLoader != null)
+            loseLevelLoader.LoadNextLevel();
+        else
+            Debug.LogError("CitronautSpawner loseLevelLoader not assigned (set it in Inspector).");
     }
 }
