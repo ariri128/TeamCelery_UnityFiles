@@ -467,11 +467,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7bb5947c56d344b908580623af7c1a3b, type: 3}
   - {fileID: 21300000, guid: 9c078ccf905bd4436bd4dec7fa1e92f5, type: 3}
   targetVisibleDuckHeight: 1.25
+  duckHitboxScale: 0.85
   shooter: {fileID: 1414256683}
   knightro: {fileID: 533156439}
   levelLoader: {fileID: 1414256684}
   uiUpdate: {fileID: 1768736035}
-  spawnInterval: 3.5
+  spawnInterval: 4.5
   maxDucksAlive: 1
   firstSpawnDelay: 2
   respawnDelay: 2
@@ -484,6 +485,9 @@ MonoBehaviour:
   maxMissesToLose: 5
   loseLevelLoader: {fileID: 980397908}
   betweenRoundDelay: 0.75
+  round1DuckSpeed: 5
+  speedIncreasePerRound: 1
+  maxDuckSpeed: 9
 --- !u!1001 &533156438
 PrefabInstance:
   m_ObjectHideFlags: 0

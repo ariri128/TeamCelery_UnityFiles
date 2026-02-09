@@ -34,6 +34,12 @@ public class DuckMovement : MonoBehaviour
     private float jumpStartTime = 0f;
     private float nextJumpTime = 0f;
 
+    // Miss / dive animation
+    public float missHopHeight = 0.35f; // small hop up before diving
+    public float missDiveDepth = 0.6f; // how far below waterline it dives
+    public float missDiveDuration = 0.45f; // total time of hop + dive
+    private bool isDiving = false;
+
     void Start()
     {
         cam = Camera.main;
@@ -48,6 +54,8 @@ public class DuckMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDiving) return;
+
         // Move left/right
         transform.position += Vector3.right * (direction * speed * Time.deltaTime);
 
@@ -148,5 +156,49 @@ public class DuckMovement : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = baseY;
         transform.position = pos;
+    }
+
+    public void PlayMissDive(System.Action onDone = null)
+    {
+        if (isDiving) return;
+        StartCoroutine(MissDiveRoutine(onDone));
+    }
+
+    private System.Collections.IEnumerator MissDiveRoutine(System.Action onDone)
+    {
+        isDiving = true;
+
+        // Stop normal jump cycle so it doesn't fight the animation
+        isJumping = false;
+
+        transform.rotation = Quaternion.identity;
+
+        Vector3 start = transform.position;
+        Vector3 peak = new Vector3(start.x, baseY + missHopHeight, start.z);
+        Vector3 end = new Vector3(start.x, baseY - missDiveDepth, start.z);
+
+        float half = Mathf.Max(0.01f, missDiveDuration * 0.5f);
+
+        // Hop up
+        float t = 0f;
+        while (t < half)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / half);
+            transform.position = Vector3.Lerp(start, peak, p);
+            yield return null;
+        }
+
+        // Dive down
+        t = 0f;
+        while (t < half)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / half);
+            transform.position = Vector3.Lerp(peak, end, p);
+            yield return null;
+        }
+
+        onDone?.Invoke();
     }
 }
