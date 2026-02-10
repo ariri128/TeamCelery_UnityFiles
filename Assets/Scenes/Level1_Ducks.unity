@@ -608,6 +608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809145664}
   - component: {fileID: 809145665}
+  - component: {fileID: 809145666}
   m_Layer: 0
   m_Name: waves_0
   m_TagString: Untagged
@@ -624,8 +625,8 @@ Transform:
   m_GameObject: {fileID: 809145663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0076, y: -3.289, z: 0}
-  m_LocalScale: {x: 13.887675, y: 14.247815, z: 1}
+  m_LocalPosition: {x: -0.0134, y: -3.26, z: 0}
+  m_LocalScale: {x: 14.249212, y: 14.247815, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1262200360}
@@ -689,6 +690,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &809145666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809145663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a95d4715369b44e7bfea901e8bd01dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSway
+  swayAmount: 0.15
+  secondsPerHalf: 1
 --- !u!1 &842016096 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7365252153029524968, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
