@@ -15,11 +15,25 @@ public class KnightroController : MonoBehaviour
 
     bool playing = false;
 
+    // Splash sound for Knightro Level 1 only
+    public AudioClip knightroSplashClip;
+    public float knightroSplashVolume = 1f;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         // Start hidden (down) so they don't show at the beginning
         if (knightro1 != null) knightro1.gameObject.SetActive(false);
         if (knightro2 != null) knightro2.gameObject.SetActive(false);
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+            audioSource.spatialBlend = 0f; // 2D sound
+        }
     }
 
     public void PlayLevel1(float xPos, System.Action onDone)
@@ -64,6 +78,12 @@ public class KnightroController : MonoBehaviour
         Vector3 upPos = new Vector3(targetX, spawnLine.position.y + popUpDistance, knightro.position.z);
 
         knightro.position = downPos;
+
+        // Play splash ONLY for Knightro Level 1 when sliding up
+        if (knightro == knightro1 && knightroSplashClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(knightroSplashClip, knightroSplashVolume);
+        }
 
         // Slide up
         yield return Slide(knightro, downPos, upPos, slideDuration);
