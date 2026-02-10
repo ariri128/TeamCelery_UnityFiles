@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 4003df4b41f84c34e849f3c9eda1f662
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4773876999217957907
+    second: TeamCeleryLogo_0
+  - first:
+      213: -954810450337069679
+    second: TeamCeleryLogo_1
+  - first:
+      213: -7970176012913885711
+    second: TeamCeleryLogo_2
+  - first:
+      213: -6590021114818826124
+    second: TeamCeleryLogo_3
+  - first:
+      213: 4572464870937962923
+    second: TeamCeleryLogo_4
+  - first:
+      213: -2211424552800589083
+    second: TeamCeleryLogo_5
+  - first:
+      213: -3461166873787047911
+    second: TeamCeleryLogo_6
+  - first:
+      213: 5373245465214888126
+    second: TeamCeleryLogo_7
+  - first:
+      213: 1901542101086364237
+    second: TeamCeleryLogo_8
+  - first:
+      213: 8920741332973000533
+    second: TeamCeleryLogo_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TeamCeleryLogo_0
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1091
+        width: 353
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de3b43c8928cfbdb0800000000000000
+      internalID: -4773876999217957907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_1
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1095
+        width: 284
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19504d744f4dfb2f0800000000000000
+      internalID: -954810450337069679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_2
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 647
+        width: 492
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fdbde0e42f346190800000000000000
+      internalID: -7970176012913885711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_3
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 1071
+        width: 283
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47076e426ba8b84a0800000000000000
+      internalID: -6590021114818826124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_4
+      rect:
+        serializedVersion: 2
+        x: 1507
+        y: 1065
+        width: 428
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9a53cf298a47f30800000000000000
+      internalID: 4572464870937962923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_5
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 656
+        width: 360
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea6ebaf5117f41e0800000000000000
+      internalID: -2211424552800589083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_6
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 658
+        width: 283
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 910e29bf01777ffc0800000000000000
+      internalID: -3461166873787047911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_7
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 651
+        width: 284
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8ac1d284a919a40800000000000000
+      internalID: 5373245465214888126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_8
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 645
+        width: 192
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42e3b45772a36a10800000000000000
+      internalID: 1901542101086364237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamCeleryLogo_9
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 540
+        width: 289
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 557100d6af6dccb70800000000000000
+      internalID: 8920741332973000533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TeamCeleryLogo_0: -4773876999217957907
+      TeamCeleryLogo_1: -954810450337069679
+      TeamCeleryLogo_2: -7970176012913885711
+      TeamCeleryLogo_3: -6590021114818826124
+      TeamCeleryLogo_4: 4572464870937962923
+      TeamCeleryLogo_5: -2211424552800589083
+      TeamCeleryLogo_6: -3461166873787047911
+      TeamCeleryLogo_7: 5373245465214888126
+      TeamCeleryLogo_8: 1901542101086364237
+      TeamCeleryLogo_9: 8920741332973000533
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
