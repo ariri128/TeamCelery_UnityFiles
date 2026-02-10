@@ -1669,6 +1669,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 1015.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 424370926}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070100117777234348, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7231279505712821924, guid: 2c307b4e404d746a398ef2c221414f09, type: 3}
       propertyPath: m_Sprite
       value: 
