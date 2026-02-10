@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7949210602650956060}
   - component: {fileID: 7433838121525945625}
   - component: {fileID: -7272825096955636751}
+  - component: {fileID: -428029232311965365}
   - component: {fileID: -1485006132198435473}
   - component: {fileID: -8275610673809063014}
-  - component: {fileID: -428029232311965365}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Duck
@@ -169,53 +169,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-1485006132198435473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6737596819898959836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab93782bfcd0e4824b0cf7ea02393fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DuckMovement2
-  speed: 4
-  edgePadding: 0.4
-  bobAmplitude: 0.24
-  bobFrequency: 2
-  swayRotation: 8
-  swayFrequency: 2
-  direction: 1
-  minJumpInterval: 2
-  maxJumpInterval: 3.5
-  jumpHeight: 1.38
-  jumpDuration: 1.79
-  missHopHeight: 1
-  missDiveDepth: 0.6
-  missDiveDuration: 0.85
-  jumpLandSplashClip: {fileID: 8300000, guid: f8a86907b93e658438b0f27589109e58, type: 3}
-  jumpLandSplashVolume: 2
-  quackSound: {fileID: 8300000, guid: 01824acde7a5c264093533e1748ae8b2, type: 3}
-  minQuackInterval: 1.5
-  maxQuackInterval: 3.5
-  quackVolume: 1
---- !u!114 &-8275610673809063014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6737596819898959836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c49e47d12e0490a9cebccd1ed02330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DuckTarget
-  spawner: {fileID: 0}
-  destroyDelay: 0.25
-  explosionPrefab: {fileID: 4024151414417881908, guid: d8d1d5ac18d4eac4c98b6149ac366db0, type: 3}
 --- !u!82 &-428029232311965365
 AudioSource:
   m_ObjectHideFlags: 0
@@ -313,3 +266,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1485006132198435473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737596819898959836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab93782bfcd0e4824b0cf7ea02393fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DuckMovement2
+  speed: 4
+  edgePadding: 0.4
+  bobAmplitude: 0.24
+  bobFrequency: 2
+  swayRotation: 8
+  swayFrequency: 2
+  direction: 1
+  minJumpInterval: 2
+  maxJumpInterval: 3.5
+  jumpHeight: 1.38
+  jumpDuration: 1.79
+  missHopHeight: 1
+  missDiveDepth: 0.6
+  missDiveDuration: 0.85
+  jumpLandSplashClip: {fileID: 8300000, guid: f8a86907b93e658438b0f27589109e58, type: 3}
+  jumpLandSplashVolume: 2
+  quackSound: {fileID: 8300000, guid: 01824acde7a5c264093533e1748ae8b2, type: 3}
+  minQuackInterval: 1.5
+  maxQuackInterval: 3.5
+  quackVolume: 1
+--- !u!114 &-8275610673809063014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737596819898959836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c49e47d12e0490a9cebccd1ed02330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DuckTarget
+  spawner: {fileID: 0}
+  destroyDelay: 0.25
+  explosionPrefab: {fileID: 4024151414417881908, guid: d8d1d5ac18d4eac4c98b6149ac366db0, type: 3}
+  lifeTimeSeconds: 7

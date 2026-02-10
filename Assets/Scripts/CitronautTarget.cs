@@ -17,6 +17,24 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
 
     private Vector3 escapeDir = Vector3.up;
 
+    // Escape laugh audio (plays while floating away)
+    public AudioClip escapeLaughClip;
+    public float escapeLaughVolume = 0.8f;
+    public bool loopLaughWhileEscaping = false;
+
+    private AudioSource escapeAudio;
+
+    void Awake()
+    {
+        escapeAudio = GetComponent<AudioSource>();
+        if (escapeAudio == null)
+            escapeAudio = gameObject.AddComponent<AudioSource>();
+
+        escapeAudio.playOnAwake = false;
+        escapeAudio.loop = false;
+        escapeAudio.spatialBlend = 0f; // 2D
+    }
+
     void Update()
     {
         if (escaping)
@@ -49,6 +67,7 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
         isEnding = true;
 
         if (timeoutRoutine != null) { StopCoroutine(timeoutRoutine); timeoutRoutine = null; }
+        if (escapeAudio != null) escapeAudio.Stop();
 
         // Hide citronaut instantly
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
@@ -73,6 +92,25 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
         isEnding = true;
 
         if (timeoutRoutine != null) { StopCoroutine(timeoutRoutine); timeoutRoutine = null; }
+
+        // Play laugh while escaping (miss or timeout both call this)
+        if (escapeLaughClip != null && escapeAudio != null)
+        {
+            escapeAudio.Stop();
+
+            if (loopLaughWhileEscaping)
+            {
+                escapeAudio.clip = escapeLaughClip;
+                escapeAudio.volume = escapeLaughVolume;
+                escapeAudio.loop = true;
+                escapeAudio.Play();
+            }
+            else
+            {
+                escapeAudio.loop = false;
+                escapeAudio.PlayOneShot(escapeLaughClip, escapeLaughVolume);
+            }
+        }
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         CitronautMovement move = GetComponent<CitronautMovement>();
