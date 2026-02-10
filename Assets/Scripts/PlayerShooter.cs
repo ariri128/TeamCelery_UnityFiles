@@ -43,7 +43,16 @@ public class PlayerShooter : MonoBehaviour
             {
                 shootable.OnShot();
 
-                uiUpdate.score += 300;
+                if (ScoreHolder.Instance != null)
+                {
+                    ScoreHolder.Instance.AddScore(300);
+                    uiUpdate.score = ScoreHolder.Instance.TotalScore;
+                }
+                else
+                {
+                    // Fallback
+                    uiUpdate.score += 300;
+                }
                 uiUpdate.ScoreUpdate();
 
                 if (uiUpdate.currentlevel == 1)
