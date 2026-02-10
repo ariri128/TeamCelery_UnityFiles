@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8608774357914449566}
   - component: {fileID: 7676382987401691319}
   - component: {fileID: 5044689678709794866}
+  - component: {fileID: -6880063878210871411}
   - component: {fileID: 5889934508738308626}
   - component: {fileID: 8556549039727049603}
-  - component: {fileID: -6880063878210871411}
   m_Layer: 0
   m_Name: Citronaut
   m_TagString: Citronaut
@@ -159,42 +159,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.007613271, y: -0.038066506}
   m_Radius: 0.17958827
---- !u!114 &5889934508738308626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3173107781695894679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cda690103d724197a7bf8239daa5fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CitronautMovement
-  minY: 0
-  moveSpeed: 7
-  borderBounceBoost: 1
-  screenPadding: 0.2
-  idleRotateSpeed: 40
-  bounceClip: {fileID: 8300000, guid: 913f9ae254495574e9868143a2b91519, type: 3}
-  bounceVolume: 1
-  bounceCooldown: 0.06
---- !u!114 &8556549039727049603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3173107781695894679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b83610c554dbf4957b4636d5d793a968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CitronautTarget
-  spawner: {fileID: 0}
-  explosionPrefab: {fileID: 4024151414417881908, guid: 84072da0e06ae4d0094c858098bfbdd1, type: 3}
-  escapeSpeed: 6
-  destroyDelayWhenShot: 0.15
 --- !u!82 &-6880063878210871411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -292,3 +256,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5889934508738308626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173107781695894679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cda690103d724197a7bf8239daa5fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CitronautMovement
+  minY: 0
+  moveSpeed: 7
+  borderBounceBoost: 1
+  screenPadding: 0.2
+  idleRotateSpeed: 40
+  bounceClip: {fileID: 8300000, guid: 913f9ae254495574e9868143a2b91519, type: 3}
+  bounceVolume: 1
+  bounceCooldown: 0.06
+--- !u!114 &8556549039727049603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173107781695894679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83610c554dbf4957b4636d5d793a968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CitronautTarget
+  spawner: {fileID: 0}
+  explosionPrefab: {fileID: 4024151414417881908, guid: 84072da0e06ae4d0094c858098bfbdd1, type: 3}
+  maxTimeOnScreen: 7
+  escapeSpeed: 6
+  destroyDelayWhenShot: 0.15
+  escapeLaughClip: {fileID: 8300000, guid: 344fd482fb5bf874cab9ccb59b6af164, type: 3}
+  escapeLaughVolume: 0.8
+  loopLaughWhileEscaping: 0

@@ -1368,6 +1368,10 @@ PrefabInstance:
       propertyPath: hitDetector
       value: 
       objectReference: {fileID: 855041058}
+    - target: {fileID: 6002292806255844440, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
+      propertyPath: gunShotVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
