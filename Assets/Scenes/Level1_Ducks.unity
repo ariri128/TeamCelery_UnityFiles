@@ -1092,7 +1092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314969581879780861, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: nextSceneName
-      value: Level2_Citronaut
+      value: Transition_Cutscene
       objectReference: {fileID: 0}
     - target: {fileID: 4874919237770651133, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: m_Name
