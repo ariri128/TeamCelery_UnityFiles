@@ -44,6 +44,16 @@ public class DuckMovement : MonoBehaviour
     public AudioClip jumpLandSplashClip; // plug in splash sound
     public float jumpLandSplashVolume = 0.35f;
 
+    // Quack audio
+    // Quack sound
+    public AudioClip quackSound;
+    public float minQuackInterval = 3f;
+    public float maxQuackInterval = 7f;
+    public float quackVolume = 0.6f;
+
+    private AudioSource audioSource;
+    private float nextQuackTime;
+
     void Start()
     {
         cam = Camera.main;
@@ -54,11 +64,30 @@ public class DuckMovement : MonoBehaviour
 
         ScheduleNextJump();
         UpdateFlip();
+
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+
+        ScheduleNextQuack();
     }
 
     void Update()
     {
         if (isDiving) return;
+
+        // Random quack
+        if (quackSound != null && Time.time >= nextQuackTime)
+        {
+            audioSource.PlayOneShot(quackSound, quackVolume);
+            ScheduleNextQuack();
+        }
 
         // Move left/right
         transform.position += Vector3.right * (direction * speed * Time.deltaTime);
@@ -146,6 +175,11 @@ public class DuckMovement : MonoBehaviour
     void ScheduleNextJump()
     {
         nextJumpTime = Time.time + Random.Range(minJumpInterval, maxJumpInterval);
+    }
+
+    void ScheduleNextQuack()
+    {
+        nextQuackTime = Time.time + Random.Range(minQuackInterval, maxQuackInterval);
     }
 
     void UpdateFlip()
