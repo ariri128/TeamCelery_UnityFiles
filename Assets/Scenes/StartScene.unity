@@ -3321,7 +3321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd12815ef0525417383faa89db640885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
-  nextSceneName: Level1_Ducks
+  nextSceneName: Start_Cutscene
 --- !u!1 &1376050916
 GameObject:
   m_ObjectHideFlags: 0
