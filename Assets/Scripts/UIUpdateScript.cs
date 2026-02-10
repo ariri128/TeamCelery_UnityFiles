@@ -44,6 +44,12 @@ public class UIUpdateScript : MonoBehaviour
     public DuckSpawner duckSpawner;
     public PlayerShooter playerShooter;
 
+    // Whistle audio for the level intro
+    public AudioClip whistleClip;
+    public float whistleVolume = 0.6f;
+
+    private AudioSource whistleSource;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -196,11 +202,25 @@ public class UIUpdateScript : MonoBehaviour
         if (pegasusJump != null) pegasusJump.SetActive(true);
         if (pegasusWing != null) pegasusWing.SetActive(true);
 
+        // Play whistle sound during intro
+        if (whistleClip != null)
+        {
+            EnsureWhistleSource();
+            whistleSource.Stop(); // ensures it restarts cleanly
+            whistleSource.volume = whistleVolume;
+            whistleSource.clip = whistleClip;
+            whistleSource.Play();
+        }
+
         // Set correct level number
         if (levelPanelText != null)
             levelPanelText.text = "Level " + currentlevel;
 
         yield return new WaitForSeconds(levelIntroShowSeconds);
+
+        // Stop whistle when intro ends
+        if (whistleSource != null && whistleSource.isPlaying)
+            whistleSource.Stop();
 
         // Hide the intro stuff
         if (levelPanel != null) levelPanel.SetActive(false);
@@ -240,5 +260,18 @@ public class UIUpdateScript : MonoBehaviour
             hitUI[slotIndex].sprite = wasHit ? duckCollected : duckUncollected;
         else
             hitUI[slotIndex].sprite = wasHit ? citronautHit : citronautMiss;
+    }
+
+    void EnsureWhistleSource()
+    {
+        if (whistleSource != null) return;
+
+        whistleSource = GetComponent<AudioSource>();
+        if (whistleSource == null)
+            whistleSource = gameObject.AddComponent<AudioSource>();
+
+        whistleSource.playOnAwake = false;
+        whistleSource.loop = true;
+        whistleSource.spatialBlend = 0f; // 2D
     }
 }
