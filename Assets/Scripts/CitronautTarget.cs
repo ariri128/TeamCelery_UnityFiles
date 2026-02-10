@@ -6,6 +6,9 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
 
     public GameObject explosionPrefab;
 
+    public float maxTimeOnScreen = 7f; // Seconds before timeout (counts as miss)
+    private Coroutine timeoutRoutine;
+
     public float escapeSpeed = 6f;
     public float destroyDelayWhenShot = 0.15f;
 
@@ -45,6 +48,8 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
         if (isEnding) return;
         isEnding = true;
 
+        if (timeoutRoutine != null) { StopCoroutine(timeoutRoutine); timeoutRoutine = null; }
+
         // Hide citronaut instantly
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null) sr.enabled = false;
@@ -66,6 +71,8 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
     {
         if (isEnding) return;
         isEnding = true;
+
+        if (timeoutRoutine != null) { StopCoroutine(timeoutRoutine); timeoutRoutine = null; }
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         CitronautMovement move = GetComponent<CitronautMovement>();
@@ -131,5 +138,25 @@ public class CitronautTarget : MonoBehaviour, IShootableTarget
         }
 
         Destroy(boom, life + 0.1f);
+    }
+
+    void OnEnable()
+    {
+        if (timeoutRoutine != null) StopCoroutine(timeoutRoutine);
+        timeoutRoutine = StartCoroutine(TimeoutRoutine());
+    }
+
+    private System.Collections.IEnumerator TimeoutRoutine()
+    {
+        yield return new WaitForSeconds(maxTimeOnScreen);
+
+        if (isEnding || escaping) yield break;
+
+        // Clear shooter target so player isn't stuck with an expired target
+        if (spawner != null && spawner.shooter != null)
+            spawner.shooter.RegisterTarget(null);
+
+        // Trigger the same behavior as missing all bullets
+        OnOutOfTries();
     }
 }

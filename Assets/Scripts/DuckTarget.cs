@@ -7,12 +7,28 @@ public class DuckTarget : MonoBehaviour, IShootableTarget
 
     public GameObject explosionPrefab;
 
+    // Time limit (auto-miss)
+    public float lifeTimeSeconds = 7f; // Duck stays on screen this long
+    private float spawnTime;
+
     private SpriteRenderer sr;
     private bool isEnding = false;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        spawnTime = Time.time;
+    }
+
+    void Update()
+    {
+        if (isEnding) return;
+
+        if (Time.time - spawnTime >= lifeTimeSeconds)
+        {
+            // Same outcome as missing all bullets
+            OnOutOfTries();
+        }
     }
 
     public void OnShot()
