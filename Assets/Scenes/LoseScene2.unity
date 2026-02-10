@@ -1667,6 +1667,7 @@ GameObject:
   - component: {fileID: 1004140121}
   - component: {fileID: 1004140120}
   - component: {fileID: 1004140119}
+  - component: {fileID: 1004140123}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -1764,6 +1765,18 @@ MonoBehaviour:
           m_StringArgument: Level1_Ducks
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1004140123}
+        m_TargetAssemblyTypeName: ResetScoreLvl2, Assembly-CSharp
+        m_MethodName: RestartLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1004140121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1815,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004140117}
   m_CullTransparentMesh: 1
+--- !u!114 &1004140123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004140117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8f93cce113b44ed8267d33ac191f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetScoreLvl2
 --- !u!1 &1042877290
 GameObject:
   m_ObjectHideFlags: 0
