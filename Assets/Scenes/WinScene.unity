@@ -3143,6 +3143,7 @@ GameObject:
   - component: {fileID: 1236214849}
   - component: {fileID: 1236214848}
   - component: {fileID: 1236214847}
+  - component: {fileID: 1236214851}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -3228,9 +3229,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1236214847}
-        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 1236214851}
+        m_TargetAssemblyTypeName: ClickButtonAction, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3278,6 +3279,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236214845}
   m_CullTransparentMesh: 1
+--- !u!114 &1236214851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236214845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59adce556c6b48d3be28dc07253ffbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickButtonAction
+  levelLoader: {fileID: 1236214847}
+  quitFunc: {fileID: 0}
 --- !u!1 &1257137823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3868,7 @@ GameObject:
   - component: {fileID: 1526838588}
   - component: {fileID: 1526838587}
   - component: {fileID: 1526838591}
+  - component: {fileID: 1526838592}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -3938,21 +3954,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1526838587}
-        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 1526838591}
+        m_TargetAssemblyTypeName: ResetScore, Assembly-CSharp
+        m_MethodName: ResetScoreForNewRun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1_Ducks
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1526838591}
-        m_TargetAssemblyTypeName: ResetScore, Assembly-CSharp
-        m_MethodName: ResetScoreForNewRun
+      - m_Target: {fileID: 1526838592}
+        m_TargetAssemblyTypeName: ClickButtonAction, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4012,6 +4028,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd8e13c063774ddd919144473a1528b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResetScore
+--- !u!114 &1526838592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526838585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59adce556c6b48d3be28dc07253ffbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickButtonAction
+  levelLoader: {fileID: 1526838587}
+  quitFunc: {fileID: 0}
 --- !u!1 &1547724163
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,6 +4514,7 @@ GameObject:
   - component: {fileID: 1756583326}
   - component: {fileID: 1756583325}
   - component: {fileID: 1756583324}
+  - component: {fileID: 1756583328}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -4568,8 +4599,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1756583324}
-        m_TargetAssemblyTypeName: QuitFunc, Assembly-CSharp
+      - m_Target: {fileID: 1756583328}
+        m_TargetAssemblyTypeName: ClickButtonAction, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -4618,6 +4649,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756583322}
   m_CullTransparentMesh: 1
+--- !u!114 &1756583328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756583322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59adce556c6b48d3be28dc07253ffbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickButtonAction
+  levelLoader: {fileID: 0}
+  quitFunc: {fileID: 1756583324}
 --- !u!1 &1762981604
 GameObject:
   m_ObjectHideFlags: 0
