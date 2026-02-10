@@ -13,6 +13,23 @@ public class PlayerShooter : MonoBehaviour
     public HitMarkerDetector hitDetector;
     private bool canShoot = true;
 
+    // Gunshot audio
+    public AudioClip gunShotClip;
+    public float gunShotVolume = 0.6f;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+    }
+
     public void RegisterTarget(IShootableTarget target)
     {
         currentTarget = target;
@@ -31,6 +48,12 @@ public class PlayerShooter : MonoBehaviour
 
     private void HandleClick()
     {
+        // Play gunshot sound
+        if (gunShotClip != null)
+        {
+            audioSource.PlayOneShot(gunShotClip, gunShotVolume);
+        }
+
         triesUsed++;
 
         // Hit marker based hit check (instead of mouse raycast)

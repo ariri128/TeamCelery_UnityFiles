@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 6002292806255844440, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: gunShotClip
       value: 
-      objectReference: {fileID: 8300000, guid: a8b794e7fec99bd4b8e748a0f96ab4b8, type: 3}
+      objectReference: {fileID: 8300000, guid: 7585779c456e042c2980a7c431bbaef7, type: 3}
     - target: {fileID: 6002292806255844440, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: hitDetector
       value: 
