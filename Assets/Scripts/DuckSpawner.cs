@@ -62,6 +62,10 @@ public class DuckSpawner : MonoBehaviour
     public AudioClip spawnSplashClip; // plug in splash sound
     public float spawnSplashVolume = 0.35f;
 
+    // Quack audio
+    public AudioClip spawnQuackClip; // plug in quack sound
+    public float spawnQuackVolume = 1f;
+
     void Start()
     {
         cam = Camera.main;
@@ -160,18 +164,24 @@ public class DuckSpawner : MonoBehaviour
 
         GameObject duck = Instantiate(duckPrefab, new Vector3(x, y, 0f), Quaternion.identity);
 
-        // Spawn splash sound (plays from the duck's position)
+        // Audio at start of spawn
+        AudioSource a = duck.GetComponent<AudioSource>();
+        if (a == null) a = duck.AddComponent<AudioSource>();
+
+        a.playOnAwake = false;
+        a.loop = false;
+        a.spatialBlend = 0f; // 0 = 2D
+
+        // Spawn splash
         if (spawnSplashClip != null)
         {
-            AudioSource a = duck.GetComponent<AudioSource>();
-            if (a == null) a = duck.AddComponent<AudioSource>();
+            a.PlayOneShot(spawnSplashClip, spawnSplashVolume);
+        }
 
-            a.playOnAwake = false;
-            a.loop = false;
-            a.spatialBlend = 0f; // 0 = 2D
-            a.volume = spawnSplashVolume;
-
-            a.PlayOneShot(spawnSplashClip);
+        // Spawn quack
+        if (spawnQuackClip != null)
+        {
+            a.PlayOneShot(spawnQuackClip, spawnQuackVolume);
         }
 
         // Randomize which teammate duck sprite is used

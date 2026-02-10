@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusic
   musicClip: {fileID: 8300000, guid: 753ee93132b746944894f5d71adc658e, type: 3}
-  volume: 0.3
+  volume: 0.2
   loop: 1

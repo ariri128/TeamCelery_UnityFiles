@@ -48,6 +48,15 @@ public class KnightroController : MonoBehaviour
 
         playing = true;
 
+        // Randomize facing each time he appears
+        SpriteRenderer sr = knightro.GetComponent<SpriteRenderer>();
+        if (sr == null) sr = knightro.GetComponentInChildren<SpriteRenderer>(); // in case renderer is on a child
+
+        if (sr != null)
+        {
+            sr.flipX = (Random.value < 0.5f);
+        }
+
         knightro.gameObject.SetActive(true);
 
         // Put him at the SpawnLine position to start (your "behind waves/spaceship" line)

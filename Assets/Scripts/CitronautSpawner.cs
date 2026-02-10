@@ -7,18 +7,18 @@ public class CitronautSpawner : MonoBehaviour
     public KnightroController knightro;
     public UIUpdateScript uiUpdate;
 
-    public LevelLoader winLevelLoader;     // set nextSceneName to your WinScene (if using a scene)
-    public bool useWinScene = true;        // if false, it will just stop and log win (if using UI panel)
+    public LevelLoader winLevelLoader; // set nextSceneName to your WinScene (if using a scene)
+    public bool useWinScene = true; // if false, it will just stop and log win (if using UI panel)
 
     public Sprite[] citronautRoundSprites; // different Citronauts for each round
 
-    public Transform spawnLine;              // Set this to your SpawnLine object
+    public Transform spawnLine; // Set this to your SpawnLine object
     public float spawnInterval = 1.25f;
 
     public int maxAlive = 1;
 
-    public float firstSpawnDelay = 1.5f;   // fast spawn at level start
-    public float respawnDelay = 3f;       // gap for Knightro animation after Citronaut ends
+    public float firstSpawnDelay = 1.5f; // fast spawn at level start
+    public float respawnDelay = 3f; // gap for Knightro animation after Citronaut ends
 
     private bool respawnQueued = false;
 
@@ -50,9 +50,9 @@ public class CitronautSpawner : MonoBehaviour
     private bool spawningEnabled = false;
 
     // Size change per round
-    public float round1Scale = 1f;              // Round 1 size
+    public float round1Scale = 1f; // Round 1 size
     public float scaleDecreasePerRound = 0.08f; // Round 2 = 1 - 0.08, Round 3 = 1 - 0.16
-    public float minScale = 0.7f;               // Safety cap
+    public float minScale = 0.7f; // Safety cap
 
     void Start()
     {

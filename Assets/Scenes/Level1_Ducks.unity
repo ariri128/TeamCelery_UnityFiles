@@ -489,7 +489,9 @@ MonoBehaviour:
   speedIncreasePerRound: 1
   maxDuckSpeed: 9
   spawnSplashClip: {fileID: 8300000, guid: f8a86907b93e658438b0f27589109e58, type: 3}
-  spawnSplashVolume: 0.35
+  spawnSplashVolume: 1
+  spawnQuackClip: {fileID: 8300000, guid: 01824acde7a5c264093533e1748ae8b2, type: 3}
+  spawnQuackVolume: 1
 --- !u!1001 &533156438
 PrefabInstance:
   m_ObjectHideFlags: 0
