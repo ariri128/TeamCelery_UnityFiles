@@ -972,6 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332658613}
   - component: {fileID: 1332658614}
+  - component: {fileID: 1332658615}
   m_Layer: 0
   m_Name: Updated_rocket_0
   m_TagString: Untagged
@@ -1053,6 +1054,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1332658615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332658612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2e3a482862a460dad8ba24127c24b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketSway
+  swayAmount: 0.15
+  secondsPerHalf: 1
 --- !u!1001 &1503311916
 PrefabInstance:
   m_ObjectHideFlags: 0
