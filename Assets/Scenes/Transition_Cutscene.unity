@@ -799,6 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946990439}
   - component: {fileID: 946990438}
+  - component: {fileID: 946990440}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -859,6 +860,20 @@ Transform:
   - {fileID: 243055316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946990440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946990437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841ba79e194e24e4091c7de2d5e7777d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CutToNextScene
+  director: {fileID: 946990438}
+  nextSceneName: Level2_Citronaut
 --- !u!1 &1343740330
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +972,7 @@ SpriteRenderer:
   m_Size: {x: 0.44, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &1343740333
 Transform:
@@ -1226,7 +1241,7 @@ SpriteRenderer:
   m_Size: {x: 0.87, y: 0.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &1435040978
 Transform:

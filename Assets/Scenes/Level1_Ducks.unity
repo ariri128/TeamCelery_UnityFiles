@@ -942,6 +942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 6464439864526928078, guid: 7bd62f90a8b90485183670b314e61dd2, type: 3}
+      propertyPath: musicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b6561c6b6623f42f0b19dd42569534f1, type: 3}
     - target: {fileID: 6725131327278498914, guid: 7bd62f90a8b90485183670b314e61dd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.74327
@@ -1092,7 +1096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314969581879780861, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: nextSceneName
-      value: Level2_Citronaut
+      value: Transition_Cutscene
       objectReference: {fileID: 0}
     - target: {fileID: 4874919237770651133, guid: 3debf3e21410a4b85b8ea947d03a2ecd, type: 3}
       propertyPath: m_Name
