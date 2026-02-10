@@ -1252,7 +1252,7 @@ PrefabInstance:
     - target: {fileID: 6464439864526928078, guid: 7bd62f90a8b90485183670b314e61dd2, type: 3}
       propertyPath: musicClip
       value: 
-      objectReference: {fileID: 8300000, guid: e923cc5cc0dfca3498f78a8c9f112085, type: 3}
+      objectReference: {fileID: 8300000, guid: 40155edc2e4f4b74399e349824871faa, type: 3}
     - target: {fileID: 6725131327278498914, guid: 7bd62f90a8b90485183670b314e61dd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.74327
