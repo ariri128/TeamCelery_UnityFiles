@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ba79e194e24e4091c7de2d5e7777d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutToNextScene
-  director: {fileID: 0}
+  director: {fileID: 1324628916}
   nextSceneName: WinScene
 --- !u!1 &1359396962
 GameObject:
