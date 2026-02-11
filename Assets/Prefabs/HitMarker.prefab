@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fdde5a2da6945f1a89880ad8f4bbe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitMarker
-  screenOffsetPixels: {x: -100, y: 60}
+  screenOffsetPixels: {x: -200, y: 120}
   followSmoothTime: 0.08
   screenPadding: 0.2
 --- !u!114 &2500913785637083223
