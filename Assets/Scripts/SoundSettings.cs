@@ -21,6 +21,7 @@ public class SoundSettings : MonoBehaviour
 
         RefreshSlider(_value);
         PlayerPrefs.SetFloat("SavedMasterVolume", _value);
+        PlayerPrefs.Save();
         masterMixer.SetFloat("MasterVolume", Mathf.Log10(_value / 100) * 20f);
     }
 
